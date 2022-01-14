@@ -1,4 +1,6 @@
 def divide(dividend, divisor):
     return dividend/divisor
 
-print("mymodule.py: ", __name__)
+print("my module.py: ", __name__)
+
+import lib.lib
