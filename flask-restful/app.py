@@ -28,6 +28,9 @@ class Item(Resource):
                 if item['name'] == name: 
                     return item, 200
             return {"message": "Item not found"}, 404
+            # item = list(filter(lambda x: x['name'] == name, items))
+            # item = next(filter(lambda x: x['name'] == name, items))
+            # return (item, 200) if item else ({"message": "Item not found"}, 404)
         except Exception as e: 
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500
@@ -37,14 +40,17 @@ class Item(Resource):
         try:
             data = request.get_json()
             price = data.get('price', '')
+            
             if not price:
                 return {"message": "Incorrect Payload"}, 400
+            
             for item in items: 
                 if item['name'] == name: 
                     return {"message": "Item already exists"}, 409
             item = {"name": name, "price": price} 
             items.append(item)
             return item, 201
+        
         except Exception as e: 
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500

@@ -5,4 +5,10 @@ Flask practices
 
 https://github.com/tecladocode/python-refresher
 
+# VirtualEnv
+
+python -m venv tutorial-env
+
+tutorial-env\Scripts\activate.bat
+
 # Test

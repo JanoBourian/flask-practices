@@ -63,7 +63,7 @@ def post_item_store(name:str): # '/store/some_name
                 }
                 store['items'].append(item)
                 return jsonify(item), 200
-            return jsonify({"message": "Store Not Found"}), 200     
+        return jsonify({"message": "Store Not Found"}), 200     
     except Exception as e: 
         return jsonify({"error":f"{e}"}), 500
 
