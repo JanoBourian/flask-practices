@@ -1,3 +1,3 @@
-from mymodule import divide 
+from mymodule import divide
 
 print(divide(10, 2))

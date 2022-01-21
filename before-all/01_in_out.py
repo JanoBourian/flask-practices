@@ -1,7 +1,7 @@
 ## Output
 
 name = "Francisco"
-sentence = f'Hello {name}'
+sentence = f"Hello {name}"
 
 print(sentence)
 
@@ -12,7 +12,7 @@ sentence_3 = sentence_2.format(name_1, name_2, "ready?")
 print(sentence_2)
 print(sentence_3)
 
-## Input 
+## Input
 
 ask = int(input("Whats your age?: "))
 print(f"Your age is {ask}")

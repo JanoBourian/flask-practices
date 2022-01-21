@@ -1,5 +1,6 @@
 def divide(dividend, divisor):
-    return dividend/divisor
+    return dividend / divisor
+
 
 print("my module.py: ", __name__)
 
