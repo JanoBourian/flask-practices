@@ -1,15 +1,16 @@
-from flask import Flask, jsonify, request
-from flask_restful import (
-    Resource,
-    Api,
-)
+from flask import Flask, request
+from flask_restful import Resource, Api, reqparse
+from flask_jwt import JWT, jwt_required
+from security import authenticate, identity
 import logging
 
 INTERNAL_SERVER_ERROR = {"Error": "Internal Server Error"}
 
 app = Flask(__name__)
+app.secret_key = "jose"
 api = Api(app)
 
+jwt = JWT(app, authenticate, identity)  # /auth
 items = []
 
 
@@ -23,6 +24,7 @@ api.add_resource(Student, "/student/<string:name>")
 
 
 class Item(Resource):
+    @jwt_required()
     def get(self, name):
         try:
             for item in items:
@@ -36,6 +38,7 @@ class Item(Resource):
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500
 
+    @jwt_required()
     def post(self, name):
         try:
             data = request.get_json()
@@ -55,12 +58,51 @@ class Item(Resource):
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500
 
+    @jwt_required()
+    def delete(self, name):
+        try:
+            for item in items:
+                if item["name"] == name:
+                    position = items.index(item)
+                    del items[position]
+                    return {"message": f"Item {name} removed"}, 201
+            return {"message": "Item not exists"}, 409
+
+        except Exception as e:
+            logging.error(f"Error {e}")
+            return INTERNAL_SERVER_ERROR, 500
+
+    @jwt_required()
+    def put(self, name):
+        try:
+            parser = reqparse.RequestParser()
+            parser.add_argument(
+                "price",
+                type=float,
+                required=True,
+                help="This field cannot be left blank!",
+            )
+            # data = request.get_json()
+            data = parser.parse_args()
+            new_price = data.get("price", "")
+            if new_price:
+                for item in items:
+                    if item["name"] == name:
+                        item["price"] = new_price
+                        return {"message": f"Item {name} - {new_price} changed"}, 201
+            return {"message": "Item not exists"}, 409
+
+        except Exception as e:
+            logging.error(f"Error {e}")
+            return INTERNAL_SERVER_ERROR, 500
+
 
 # http://192.168.0.20:8080/item/<string:name>
 api.add_resource(Item, "/item/<string:name>")
 
 
 class ItemList(Resource):
+    @jwt_required()
     def get(self):
         try:
             return {"items": items}, 200
