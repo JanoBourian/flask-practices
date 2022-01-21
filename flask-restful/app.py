@@ -24,6 +24,14 @@ api.add_resource(Student, "/student/<string:name>")
 
 
 class Item(Resource):
+    parser = reqparse.RequestParser()
+    parser.add_argument(
+                "price",
+                type=float,
+                required=True,
+                help="This field cannot be left blank!",
+            )
+    
     @jwt_required()
     def get(self, name):
         try:
@@ -41,7 +49,7 @@ class Item(Resource):
     @jwt_required()
     def post(self, name):
         try:
-            data = request.get_json()
+            data = Item.parser.parse_args()
             price = data.get("price", "")
 
             if not price:
@@ -75,23 +83,16 @@ class Item(Resource):
     @jwt_required()
     def put(self, name):
         try:
-            parser = reqparse.RequestParser()
-            parser.add_argument(
-                "price",
-                type=float,
-                required=True,
-                help="This field cannot be left blank!",
-            )
             # data = request.get_json()
-            data = parser.parse_args()
+            data = Item.parser.parse_args()
             new_price = data.get("price", "")
             if new_price:
                 for item in items:
                     if item["name"] == name:
                         item["price"] = new_price
                         return {"message": f"Item {name} - {new_price} changed"}, 201
-            return {"message": "Item not exists"}, 409
-
+                return {"message": "Item not exists"}, 409
+            return {"message": "Incorrect Payload"}, 400
         except Exception as e:
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500
