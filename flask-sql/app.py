@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT, jwt_required
 from security import authenticate, identity
+from user import UserRegister
 import logging
 
 INTERNAL_SERVER_ERROR = {"Error": "Internal Server Error"}
@@ -17,11 +18,6 @@ items = []
 class Student(Resource):
     def get(self, name):
         return {"student": name}
-
-
-# http://127.0.0.1:5000/student/Rolf
-api.add_resource(Student, "/student/<string:name>")
-
 
 class Item(Resource):
     parser = reqparse.RequestParser()
@@ -97,11 +93,6 @@ class Item(Resource):
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500
 
-
-# http://192.168.0.20:8080/item/<string:name>
-api.add_resource(Item, "/item/<string:name>")
-
-
 class ItemList(Resource):
     @jwt_required()
     def get(self):
@@ -111,9 +102,17 @@ class ItemList(Resource):
             logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR, 500
 
+# http://127.0.0.1:5000/student/Rolf
+api.add_resource(Student, "/student/<string:name>")
+
+# http://192.168.0.20:8080/item/<string:name>
+api.add_resource(Item, "/item/<string:name>")
 
 # http://192.168.0.20:8080/items
 api.add_resource(ItemList, "/items")
+
+# http://192.168.0.20:8080/register
+api.add_resource(UserRegister, "/register")
 
 if __name__ == "__main__":
     host = "192.168.0.20"
