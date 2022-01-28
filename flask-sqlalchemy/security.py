@@ -1,4 +1,4 @@
-from user import User
+from resources.User import User
 from werkzeug.security import safe_str_cmp
 import logging
 

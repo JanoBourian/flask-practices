@@ -1,17 +1,8 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
+from utilities.constants import (FILE, INTERNAL_SERVER_ERROR, ITEM_NOT_EXIST)
 import sqlite3
 import logging
-import os
-
-PATH = os.path.dirname(os.path.abspath(__file__))
-DATABASE = "data.db"
-FILE = PATH + "\\" + DATABASE
-INTERNAL_SERVER_ERROR = {"Error": "Internal Server Error"}, 500
-ITEM_NOT_EXIST = {"message": "Item not exists"}, 409
-
-items = []
-
 
 class Item(Resource):
     parser = reqparse.RequestParser()
@@ -112,24 +103,4 @@ class Item(Resource):
             return response
         except Exception as e:
             logging.warning("Error {e}")
-            return INTERNAL_SERVER_ERROR
-
-
-class ItemList(Resource):
-    @jwt_required()
-    def get(self):
-        try:
-            connection = sqlite3.connect(FILE)
-            cursor = connection.cursor()
-            query = "SELECT * FROM items"
-            result = cursor.execute(query)
-            row = result.fetchall()
-            connection.close()
-            items = []
-            if row:
-                for r in row:
-                    items.append({"name": r[1], "price": r[2]})
-            return {"items": items}, 200
-        except Exception as e:
-            logging.error(f"Error {e}")
             return INTERNAL_SERVER_ERROR
