@@ -2,6 +2,7 @@ from user import User
 from werkzeug.security import safe_str_cmp
 import logging
 
+
 def authenticate(username, password):
     try:
         user = User.find_by_username(username)
