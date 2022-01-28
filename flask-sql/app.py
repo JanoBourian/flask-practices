@@ -1,3 +1,4 @@
+from datetime import (timedelta,)
 from flask import Flask
 from flask_restful import Resource, Api
 from flask_jwt import JWT
@@ -11,6 +12,10 @@ from Item import (
 app = Flask(__name__)
 app.secret_key = "jose"
 api = Api(app)
+
+app.config['JWT_AUTH_URL_RULE'] = '/login'
+app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
+# app.config['JWT_AUTH_USERNAME_KEY'] = 'email'
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
