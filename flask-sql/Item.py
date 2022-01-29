@@ -111,7 +111,7 @@ class Item(Resource):
             connection.close()
             return response
         except Exception as e:
-            logging.warning("Error {e}")
+            logging.warning(f"Error {e}")
             return INTERNAL_SERVER_ERROR
 
 

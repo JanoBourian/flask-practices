@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from resources.User import User
+from models.UserModel import UserModel
 from utilities.constants import (FILE, INTERNAL_SERVER_ERROR)
 import sqlite3
 import logging
@@ -22,7 +22,7 @@ class UserRegister(Resource):
     def post(self):
         try:
             data = UserRegister.parser.parse_args()
-            if User.find_by_username(data["username"]):
+            if UserModel.find_by_username(data["username"]):
                 return {"message": f"{data['username']} already registered!"}, 409
 
             connection = sqlite3.connect(FILE)
