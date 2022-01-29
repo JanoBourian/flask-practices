@@ -1,5 +1,5 @@
 import pytest
-
+from Company import Company
 
 def test_our_first_test() -> None:
     assert 1 == 2
@@ -30,3 +30,4 @@ def test_slow() -> None:
     
 def test_correct_assert() -> None:
     assert 1 == 1
+
