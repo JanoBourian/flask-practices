@@ -12,3 +12,12 @@ https://bitbucket.org/janobourian/my-pytest-course/src/master/
 # python manage.py createsuperuser
 
 # python manage.py startapp companies
+
+# Nexts Steps: 
+- Create models in models.py
+- Register apps in admin.py 
+- Create a serializer_class and pagination_class in serializers.py 
+- Create the view in views.py 
+- Create urls.py and add urls 
+- Add new app to settings 
+- Add new urls to url configuration 
