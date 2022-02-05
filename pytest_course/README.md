@@ -80,3 +80,9 @@ def test_objects(company_object:list)->None:
     company = Company(company_object['name'], company_object['stock_symbol'])
     assert str(company) == f"{company.name}:{company.stock_symbol}"
 ```
+
+# The new way to test
+
+```
+pytest -v -s --durations=0
+```

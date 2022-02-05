@@ -21,3 +21,7 @@ https://bitbucket.org/janobourian/my-pytest-course/src/master/
 - Create urls.py and add urls 
 - Add new app to settings 
 - Add new urls to url configuration 
+
+# Functions names
+- test + Name implies test state + Suffix implies assert
+- reverse({{basename}}-list) <-- GET/POST
