@@ -85,4 +85,10 @@ def test_objects(company_object:list)->None:
 
 ```
 pytest -v -s --durations=0
+pytest -v -s -k test_raise_covid19_exception_should_pass
+pytest -v -s -k "logged"
+pytest -v -s --durations=0 -k "create"
+pytest -v -s --durations=0 -k "test and not zero"
+pytests path::TestClass::TestMethod
+pytest -v -s --durations=0 -m xfail
 ```

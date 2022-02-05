@@ -25,3 +25,9 @@ https://bitbucket.org/janobourian/my-pytest-course/src/master/
 # Functions names
 - test + Name implies test state + Suffix implies assert
 - reverse({{basename}}-list) <-- GET/POST
+
+# Problems 
+```
+# in the path what contains manage.py
+set DJANGO_SETTINGS_MODULE=coronavstech.settings
+```
