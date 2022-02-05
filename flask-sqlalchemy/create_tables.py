@@ -1,7 +1,9 @@
 import sqlite3
-from utilities.constants import (FILE, )
+import logging 
+from constants import (FILE, )
 
 def create_tables():
+    logging.warning("Creating tables")
     connection = sqlite3.connect(FILE)
     cursor = connection.cursor()
 

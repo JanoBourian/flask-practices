@@ -7,8 +7,11 @@ from resources.UserRegister import UserRegister
 from resources.Item import Item 
 from resources.ItemList import ItemList
 from create_tables import create_tables
+from constants import (FILE,)
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + FILE
+app.config['SQLALchemy_TRACK_MODIFICATIONS'] = False 
 app.secret_key = "jose"
 api = Api(app)
 
@@ -30,6 +33,8 @@ api.add_resource(UserRegister, "/register")
 
 if __name__ == "__main__":
     create_tables()
+    from db import db
+    db.init_app(app)
     host = "192.168.0.20"
     port = "8080"
     debug = True

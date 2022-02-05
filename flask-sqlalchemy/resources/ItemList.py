@@ -1,8 +1,7 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
-from utilities.constants import (FILE, INTERNAL_SERVER_ERROR, )
+from constants import (FILE, INTERNAL_SERVER_ERROR, )
 from models.ItemModel import ItemModel
-import sqlite3
 import logging
 
 class ItemList(Resource):

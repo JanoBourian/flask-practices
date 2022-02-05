@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from models.UserModel import UserModel
-from utilities.constants import (FILE, INTERNAL_SERVER_ERROR)
+from constants import (FILE, INTERNAL_SERVER_ERROR)
 import sqlite3
 import logging
 
