@@ -6,12 +6,11 @@ import logging
 def authenticate(username, password):
     try:
         user = UserModel.find_by_username(username)
-        # if user and user.password == password:
+        print(f'user: {user}') 
         if user and safe_str_cmp(user.password, password):
             return user
     except Exception as e:
         logging.error(f"Error {e}")
-
 
 def identity(payload):
     try:

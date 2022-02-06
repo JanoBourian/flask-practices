@@ -12,11 +12,14 @@ from constants import (FILE,)
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + FILE
 app.config['SQLALchemy_TRACK_MODIFICATIONS'] = False 
+app.config['JWT_AUTH_URL_RULE'] = '/login'
+app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=3600)
 app.secret_key = "jose"
 api = Api(app)
 
-app.config['JWT_AUTH_URL_RULE'] = '/login'
-app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1800)
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 jwt = JWT(app, authenticate, identity)  # /auth
 
@@ -32,7 +35,7 @@ api.add_resource(ItemList, "/items")
 api.add_resource(UserRegister, "/register")
 
 if __name__ == "__main__":
-    create_tables()
+    # create_tables()
     from db import db
     db.init_app(app)
     host = "192.168.0.20"
