@@ -12,6 +12,12 @@ class Item(Resource):
         required=True,
         help="This field cannot be left blank!",
     )
+    parser.add_argument(
+        "store_id",
+        type=int,
+        required=True,
+        help="All item nees a store_id",
+    )
 
     @jwt_required()
     def get(self, name):
@@ -30,7 +36,8 @@ class Item(Resource):
                 return {"Error": f"Item {name} already exists"}, 400
             data = Item.parser.parse_args()
             price = data.get("price", "")
-            item = ItemModel(name=name, price=price)
+            store_id = data.get("store_id", "")
+            item = ItemModel(name=name, price=price, store_id=store_id)
             response = item.add_to_database()
             return {"Message": f"Item {name} inserted successfully"}, 201 if response==201 else response
         except Exception as e:
@@ -55,7 +62,8 @@ class Item(Resource):
                 return ITEM_NOT_EXIST
             data = Item.parser.parse_args()
             price = data.get("price", "")
-            response = ItemModel.update_to_database(name=name, price=price)
+            store_id = data.get("store_id", "")
+            response = ItemModel.update_to_database(name=name, price=price, store_id=store_id)
             return {"Message": f"Item {name} updated successfully"}, 201 if response==201 else response
         except Exception as e:
             logging.error(f"Error {e}")

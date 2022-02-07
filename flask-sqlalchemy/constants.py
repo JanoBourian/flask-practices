@@ -5,3 +5,4 @@ DATABASE = "data.db"
 FILE = PATH + "\\" + DATABASE
 INTERNAL_SERVER_ERROR = {"Error": "Internal Server Error"}
 ITEM_NOT_EXIST = {"message": "Item not exists"}, 409
+STORE_NOT_EXIST = {"message": "Store not exists"}, 409

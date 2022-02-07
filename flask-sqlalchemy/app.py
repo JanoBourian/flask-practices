@@ -6,6 +6,8 @@ from security import authenticate, identity
 from resources.UserRegister import UserRegister
 from resources.Item import Item 
 from resources.ItemList import ItemList
+from resources.Store import Store
+from resources.StoreList import StoreList
 from create_tables import create_tables
 from constants import (FILE,)
 
@@ -33,6 +35,8 @@ api.add_resource(Student, "/student/<string:name>")
 api.add_resource(Item, "/item/<string:name>")
 api.add_resource(ItemList, "/items")
 api.add_resource(UserRegister, "/register")
+api.add_resource(Store, "/store/<string:name>")
+api.add_resource(StoreList, "/stores")
 
 if __name__ == "__main__":
     # create_tables()
