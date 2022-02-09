@@ -27,3 +27,19 @@ https://www.google.com/search?q=pythonista
 
 https://www.amazon.com/s?k=murakami
 ```
+
+# Sniffers and auditory 
+
+https://nmap.org/
+
+https://www.wireshark.org/
+
+https://scapy.net/
+
+## Comandos 
+
+```
+app.config.from_file()
+app.config.from_json() 
+app.config.from_pyfile('settings.cfg')
+```
