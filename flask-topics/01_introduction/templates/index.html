@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Puros Pedos | Jamón
+{% endblock %}
+
+{% block body %}
+<h1>HOLA MUNDO</h1>
+{% if numero > 10 %}
+<p> SOCIO </p>
+{% else %}
+<p> ERROR </p>
+{% endif %}
+
+{% if numero is even %}
+<p> SOCIO </p>
+{% elif numero is odd %}
+<p> ERROR </p>
+{% endif %}
+
+<ul>
+    {% for elemento in iterable %}
+    <li>{{elemento}}</li>
+    {% endfor %}
+</ul>
+
+{% macro suma (a, b=2) %}
+<p> La suma es {{a + b}} </p>
+{% endmacro %}
+{{ suma(2)}}
+{{ suma(2, 3) }}
+{% endblock %}

@@ -43,3 +43,50 @@ app.config.from_file()
 app.config.from_json() 
 app.config.from_pyfile('settings.cfg')
 ```
+
+# Type
+- string
+- int 
+- float 
+- path 
+- uuid
+
+# Jinja
+- {{VAR}}
+- {% <DECLARATION> %}
+- {# COMMENT #}
+
+# Jinja2
+```
+jinja2.FileSystemLoader('<ruta>')
+jinja2.FileSystemLoader(['<ruta 1>', '<ruta 2>', ..., '<ruta n>'])
+jinja2.Environment(loader = <objeto de la clase jinja2.FileSystemLoader>, <otros parámetros>)
+```
+
+## Example 
+
+```
+import os
+import jinja2
+from IPython.display import HTML 
+miruta = os.getcwd()
+entorno = jinja2.Environment(loader=jinja2.FileSystemLoader(miruta + '/plantillas'))
+template = entorno.get_template("plantilla.html")
+ligas = [['slashdot', 'https://slashdot.org'], 
+         ['pythonista', 'https://pythonista.mx'], 
+         ['cloudevel', 'https://cloudevel.com']]
+print(template.render(lista=ligas))
+HTML(template.render(lista=ligas))
+```
+
+## Aditional validations 
+
+```
+{% if numero is even %}
+    <p> SOCIO </p>
+{% elif numero is odd %}
+    <p> ERROR </p>
+{% endif %}
+``` 
+
+## Macros (little functions in her scope)
