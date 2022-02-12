@@ -1,0 +1,32 @@
+organization: eazybank 
+about: |
+  EazyBank
+  is an 
+  Bank based
+  application
+history: >
+  Eazybank
+  established
+  in 1989
+information: |-
+  This remove 
+  the final
+  enter space
+moreInformation: |+
+  This conserve 
+  the linescapes
+  at the final line 
+
+
+
+# This is a comment
+# on multiples lines
+andOtherCase: >+
+  The same case
+  with this new structure
+  in folder case
+
+
+
+products: "[Accounts] & {Cards} - <Loans>" #Special characters
+hasMobileApp: "Yes"
