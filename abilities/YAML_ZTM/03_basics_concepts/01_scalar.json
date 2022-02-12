@@ -1,0 +1,17 @@
+{
+    "invalidNumber": NaN, 
+    "minor-version": 0.5, 
+    "area": "Online", 
+    "goodDay": true, 
+    "niceWeekend": true, 
+    "hex": 4822, 
+    "major-versiones": 2, 
+    "languages": "Java", 
+    "null-value": null, 
+    "boringWeekend": false, 
+    "positive-infinite": Infinity, 
+    "octal": 10522, 
+    "badDay": false, 
+    "negative-infinite": -Infinity, 
+    "name": "eazybites"
+  }
