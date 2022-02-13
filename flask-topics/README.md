@@ -90,3 +90,8 @@ HTML(template.render(lista=ligas))
 ``` 
 
 ## Macros (little functions in her scope)
+
+## WTForms
+
+- https://wtforms.readthedocs.io/en/3.0.x/
+- https://wtforms.readthedocs.io/en/2.3.x/fields/
