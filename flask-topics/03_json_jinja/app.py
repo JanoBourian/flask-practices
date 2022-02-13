@@ -1,16 +1,21 @@
-from flask import Flask 
+import json
+from flask import Flask, jsonify, render_template 
+from functions.busqueda import (buscar_archivo,)
 
 app = Flask(__name__)
 # app.config.from_pyfile('configurations/config.py')
 app.config.from_object('configurations.config.DevConfig')
 
-@app.route('/api/<string:cadena>')
-def busqueda(cadena):
-    return f"<h1> {cadena} </h1>"
+ruta = 'data/alumnos.txt'
+campos = ['nombre', 'primer_apellido', 'segundo_apellido']
 
-@app.route('/despliega/<string:cadena>')
-def despliega(cadena):
-    return f"<h1> {cadena} </h1>"
+@app.route('/api/<string:termino>')
+def busqueda(termino):
+    return jsonify(buscar_archivo(str(termino), ruta, campos))
+
+@app.route('/despliega/<string:termino>')
+def despliega(termino):
+    return render_template('busqueda.html', alumnos = buscar_archivo(str(termino), ruta, campos))
 
 if __name__ == '__main__':
     app.run()

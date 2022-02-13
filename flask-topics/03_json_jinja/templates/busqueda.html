@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Busqueda
+{% endblock %}
+
+{% block body %}
+<ul>
+    {% for alumno in alumnos %} 
+            {% for campo in ['nombre', 'primer_apellido', 'segundo_apellido'] %}
+                <li>
+                    {{campo}}: {{alumno[campo]}}
+                </li>
+            {% endfor %}
+    {% endfor %}
+</ul>
+{% endblock %}
