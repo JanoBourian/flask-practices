@@ -95,3 +95,9 @@ HTML(template.render(lista=ligas))
 
 - https://wtforms.readthedocs.io/en/3.0.x/
 - https://wtforms.readthedocs.io/en/2.3.x/fields/
+- https://wtforms.readthedocs.io/en/2.3.x/validators/
+- https://wtforms.readthedocs.io/en/2.3.x/widgets/
+
+## FLASK_WTF
+
+- https://flask-wtf.readthedocs.io/en/1.0.x/

@@ -1,13 +1,22 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_wtf import FlaskForm
+from forms.Moviment import MovimentClass
+import logging
 
 app = Flask(__name__)
 
 app.config.from_object('config.config.DevConfig')
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index(): 
-    return render_template("index.html")
+    forma = MovimentClass()
+    if forma.validate_on_submit():
+        print(f"{forma['tipo'].data} - {forma['cantidad'].data}")
+        flash('Datos ingresados correctamente')
+        return redirect(url_for('index'))
+    else:
+        print('Datos incorrectos.')
+    return render_template("index.html", form = forma)
 
 @app.route("/ingresos")
 def ingresos(): 
