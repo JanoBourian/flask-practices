@@ -26,9 +26,13 @@ def ingresos():
 def egresos(): 
     return render_template("egresos.html")
 
-@app.route("/general")
-def general(): 
-    return render_template("general.html")
+@app.route("/reporte")
+def reporte(): 
+    return render_template("reporte.html")
+
+@app.route("/documentos")
+def documentos(): 
+    return render_template("documentos.html")
 
 if __name__ == "__main__":
     app.run()
