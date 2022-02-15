@@ -9,6 +9,7 @@ class BaseConfig:
     """Base Config"""
     TEMPLATES_FOLDER = environ.get('TEMPLATES_FOLDER')
     STATIC_FOLDER = environ.get('STATIC_FOLDER')
+    SECRET_KEY = environ.get('SECRET_KEY')
 
 class DevConfig(BaseConfig):
     SERVER_NAME = environ.get('SERVER_NAME')
