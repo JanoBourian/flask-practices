@@ -101,3 +101,8 @@ HTML(template.render(lista=ligas))
 ## FLASK_WTF
 
 - https://flask-wtf.readthedocs.io/en/1.0.x/
+
+## Flask request 
+
+- http://flask.pocoo.org/docs/latest/api/#flask.Request
+
