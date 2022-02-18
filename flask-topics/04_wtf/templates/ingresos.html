@@ -8,5 +8,27 @@
     {% include "nav.html"%}
     <div class="container">
         <h1 class="text-center py-2">Ingresos</h1>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Concepto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for d in data %}
+              <tr>
+                <th scope="row">{{d.id}}</th>
+                <td>{{d.tipo}}</td>
+                <td>{{d.concepto}}</td>
+                <td>{{d.cantidad}}</td>
+                <td>{{d.fecha}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
     </div>
 {% endblock %}
