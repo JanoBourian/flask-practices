@@ -23,8 +23,14 @@ class StoreModel(db.Model):
     @classmethod
     def find_by_name(cls, name):
         try:
-            print(f"Data {cls.query.filter_by(name = name).first()}")
             return cls.query.filter_by(name = name).first()
+        except Exception as e:
+            logging.warning(f"Error: {e}")
+    
+    @classmethod
+    def find_by_id(cls, _id):
+        try:
+            return cls.query.filter_by(id = _id).first()
         except Exception as e:
             logging.warning(f"Error: {e}")
     
@@ -52,4 +58,4 @@ class StoreModel(db.Model):
         try: 
             return StoreModel.query.all()
         except Exception as e:
-            logging.warning(f"Error: {e}")
+            logging.warning(f"Error: {e}")        
