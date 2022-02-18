@@ -10,7 +10,7 @@ Inicio | inicio
 {% with mensajes = get_flashed_messages() %}
 {% if mensajes %}
     {% for mensaje in mensajes %}
-        <div class="alert alert-primary text-center" role="alert">
+        <div class="alert alert-danger text-center" role="alert">
         {{mensaje}}
         </div>
     {% endfor %}

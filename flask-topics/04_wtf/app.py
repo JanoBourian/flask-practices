@@ -20,12 +20,7 @@ def create_tables():
 def index(): 
     forma = MovimentClass()
     if forma.validate_on_submit():
-        print(f"forma: {forma.cantidad.data}")
-        print(f"forma: {forma.tipo.data}")
-        print(f"forma: {forma.concepto.data}")
-        print(f"forma: {forma.fecha.data}")
         moviment = MovimentModel(forma.cantidad.data, forma.tipo.data, forma.concepto.data, forma.fecha.data)
-        print(moviment)
         moviment.add_to_database()
         flash('Datos ingresados correctamente')
         return redirect(url_for('index'))
@@ -37,6 +32,7 @@ def index():
 def ingresos():
     items = MovimentModel.get_all_elements()
     response = []
+    ingresos = 0
     for item in items: 
         if item.tipo == 'Ingreso':
             data = {
@@ -46,13 +42,15 @@ def ingresos():
             'concepto': item.concepto,
             'fecha': item.fecha
             }
+            ingresos = ingresos + item.cantidad
             response.append(data)
-    return render_template("ingresos.html", data = reversed(response))
+    return render_template("ingresos.html", data = [reversed(response), ingresos])
 
 @app.route("/egresos")
 def egresos(): 
     items = MovimentModel.get_all_elements()
     response = []
+    egresos = 0
     for item in items: 
         if item.tipo == 'Egreso':
             data = {
@@ -62,14 +60,16 @@ def egresos():
             'concepto': item.concepto,
             'fecha': item.fecha
             }
+            egresos = egresos + item.cantidad
             response.append(data)
-    return render_template("egresos.html", data = reversed(response))
+    return render_template("egresos.html", data = [reversed(response), egresos])
 
 @app.route("/reporte")
 def reporte(): 
     items = MovimentModel.get_all_elements()
     print(f'items: {items}') 
     response = []
+    total = 0
     for item in items: 
         data = {
             'id': item.id,
@@ -78,8 +78,37 @@ def reporte():
             'concepto': item.concepto,
             'fecha': item.fecha
         }
+        if item.tipo == 'Ingreso':
+            total = total + item.cantidad
+        if item.tipo == 'Egreso':
+            total = total - item.cantidad
         response.append(data)
-    return render_template("reporte.html", data = reversed(response))
+    return render_template("reporte.html", data = [reversed(response), total])
+
+@app.route("/delete/<int:id>")
+def delete(id):
+    if MovimentModel.find_by_id(id):
+        MovimentModel.delete(id)
+        flash('Dato borrado correctamente')
+        return redirect(url_for("index"))
+    else:
+        return redirect(url_for("index"))
+
+@app.route("/actualizar/<int:id>")
+def actualizar(id):
+    item = MovimentModel.find_by_id(id)
+    if item:        
+        response = {
+            "id": item.id,
+            "tipo": item.tipo,
+            "cantidad": item.cantidad,
+            "concepto": item.concepto,
+            "fecha": item.fecha
+        }       
+        return render_template("actualizar.html", form = response)
+    else:
+        flash('Dato no se puede actualizar')
+        return redirect(url_for("index"))
 
 @app.route("/documentos")
 def documentos(): 

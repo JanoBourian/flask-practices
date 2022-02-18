@@ -23,10 +23,28 @@ class MovimentModel(db.Model):
         except Exception as e:
             logging.warning(f"ERROR: {e}")
     
+       
+    @classmethod
+    def find_by_id(cls, _id):
+        try:
+            return cls.query.filter_by(id=_id).first()
+        except Exception as e:
+            logging.warning(f"ERROR: {e}")
+        
+        
     @classmethod
     def get_all_elements(cls):
         try:
             items = cls.query.all()
             return items
+        except Exception as e:
+            logging.warning(f"ERROR: {e}")
+            
+    @classmethod
+    def delete(cls, _id):
+        try:
+            item = cls.find_by_id(_id)
+            db.session.delete(item)
+            db.session.commit()
         except Exception as e:
             logging.warning(f"ERROR: {e}")

@@ -1,34 +1,43 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Ingresos | ingresos
+Ingresos | ingresos
 {% endblock %}
 
 {% block body %}
-    {% include "nav.html"%}
-    <div class="container">
-        <h1 class="text-center py-2">Ingresos</h1>
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Concepto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Fecha</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for d in data %}
-              <tr>
-                <th scope="row">{{d.id}}</th>
-                <td>{{d.tipo}}</td>
-                <td>{{d.concepto}}</td>
-                <td>{{d.cantidad}}</td>
-                <td>{{d.fecha}}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-    </div>
+{% include "nav.html"%}
+<div class="container">
+  <h1 class="text-center py-2">Ingresos: {{ "${:,.2f}".format(data[1])}}</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Concepto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Fecha</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in data[0] %}
+      <tr>
+        <th scope="row">{{d.id}}</th>
+        <td>{{d.tipo}}</td>
+        <td>{{d.concepto}}</td>
+        <td>{{d.cantidad}}</td>
+        <td>{{d.fecha}}</td>
+        <td>
+          <a href="/delete/{{d.id}}"><i class="fa-regular fa-trash-can" style="color:red"></i></a>
+        </td>
+        <!-- 
+        <td>
+          <a href="#"><i class="fa-solid fa-pen" style="color:green"></i></a>
+        </td>
+        -->
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

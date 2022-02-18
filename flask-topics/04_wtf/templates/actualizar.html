@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Actualizar | actualizar
+{% endblock %}
+
+{% block body %}
+{% include "nav.html"%}
+
+{% with mensajes = get_flashed_messages() %}
+{% if mensajes %}
+{% for mensaje in mensajes %}
+<div class="alert alert-danger text-center" role="alert">
+    {{mensaje}}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+    <h1 class="text-center py-2">Actualizar</h1>
+    <form class="container col-8 py-4">
+        <div class="mb-3">
+            <label class="form-label"> Cantidad </label>
+            <input class="form-control" value="{{form.cantidad}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="inlineFormCustomSelect">Tipo</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option value= "Ingreso" selected>Ingreso</option>
+                <option value="Egreso"> Egreso</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"> Concepto </label>
+            <input class="form-control" value="{{form.concepto}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"> Fecha </label>
+            <input class="form-control" value="{{form.fecha}}">
+        </div>
+        <button class="btn btn-success" href="/new-data/form.id/form.cantidad/form.concepto/form.fecha" >
+            Actualizar
+        </button>
+    </form>
+</div>
+{% endblock %}
