@@ -1,5 +1,6 @@
 from unittest import TestCase
 from models.StoreModel import StoreModel
+from models.ItemModel import ItemModel
 from db import db
 from app import app 
 import json
@@ -32,6 +33,48 @@ class TestStore(BaseTest):
             self.assertIsNotNone(StoreModel.find_by_name(name))
             store.delete_to_database(name)
             self.assertIsNone(StoreModel.find_by_name(name))
+    
+    def test_crud_item(self):
+        store_name = "Store Test"
+        description = "Test Lorem Ipsum"
+        item_sku ="9895956996"
+        item_name = "Test Item"
+        item_price = 9.99
+        with self.app_context():
+            store = StoreModel(store_name, description)
+            store.add_to_database()
+            item = ItemModel(item_sku, item_name, item_price, store.id)
+            self.assertIsNone(ItemModel.find_by_name(item.name))
+            item.add_to_database()
+            self.assertIsNotNone(ItemModel.find_by_name(item.name))
+            item.delete_to_database(item.name)
+            self.assertIsNone(ItemModel.find_by_name(item.name))
+            store.delete_to_database(store.name)
+            self.assertIsNone(StoreModel.find_by_name(store.name))
+    
+    def test_relationships(self):
+        store_name = "Store Test"
+        description = "Test Lorem Ipsum"
+        item_sku ="9895956996"
+        item_name = "Test Item"
+        item_price = 9.99
+        with self.app_context():
+            store = StoreModel(store_name, description)
+            store.add_to_database()
+            item = ItemModel(item_sku, item_name, item_price, store.id)
+            item.add_to_database()
+            self.assertEqual(item.store.name, store.name)
+            self.assertEqual(item.store_id, store.id)
+            self.assertListEqual(store.items.all(), [item])
+            self.assertEqual(store.items.count(), 1)
+            self.assertEqual(store.items.first().name, item.name)
+    
+    def test_create_store(self):
+        name = 'test'
+        description = 'description test'
+        with self.app_context():
+            store = StoreModel(name, description)
+            self.assertListEqual(store.items.all(), [])
         
     # def setUp(self):
     #     self.name = "Test"
