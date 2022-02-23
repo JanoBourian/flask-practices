@@ -1,6 +1,7 @@
 from unittest import TestCase
 from models.StoreModel import StoreModel
 from models.ItemModel import ItemModel
+from models.UserModel import UserModel
 from db import db
 from app import app 
 import json
@@ -75,6 +76,30 @@ class TestStore(BaseTest):
         with self.app_context():
             store = StoreModel(name, description)
             self.assertListEqual(store.items.all(), [])
+    
+    def test_only_create_user(self):
+        name = 'username'
+        password = 'password'
+        user = UserModel(username=name, password=password)
+        self.assertEqual(user.username, name, "In UserModel username is incorrect")
+        self.assertEqual(user.password, password, "In UserModel password is incorrect")
+    
+    def test_crud_user(self):
+        name = 'user_test'
+        password = 'password'
+        with self.app_context():
+            user = UserModel(username=name, password=password)
+            # validate user is not in db 
+            self.assertIsNone(UserModel.find_by_username(user.username))
+            # add user user in db
+            user.add_to_database()
+            # validate user is in db
+            self.assertIsNotNone(UserModel.find_by_username(user.username))
+            # delete user in db
+            user.delete_to_database(user.username)
+            # validate user is not in db
+            self.assertIsNone(UserModel.find_by_username(user.username))
+        
         
     # def setUp(self):
     #     self.name = "Test"

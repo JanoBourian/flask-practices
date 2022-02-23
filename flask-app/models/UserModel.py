@@ -19,7 +19,7 @@ class UserModel(db.Model):
         except Exception as e:
             logging.warning(f"Error: {e}")
             return {"error": f"{e}"}, 500
-        
+            
     @classmethod
     def find_by_username(cls, username): 
         try:
@@ -31,5 +31,14 @@ class UserModel(db.Model):
     def find_by_id(cls, user_id):
         try:
             return cls.query.filter_by(id = user_id).first()
+        except Exception as e:
+            logging.warning(f"Error: {e}")
+    
+    @classmethod
+    def delete_to_database(cls, name):
+        try: 
+            user = cls.find_by_username(username = name)
+            db.session.delete(user)
+            db.session.commit()
         except Exception as e:
             logging.warning(f"Error: {e}")

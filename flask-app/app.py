@@ -1,7 +1,7 @@
 from datetime import timedelta
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
-from flask_jwt import JWT
+from flask_jwt import JWT, JWTError
 from security import authenticate, identity
 from config.config import DevConfig
 from resources.Item import Item
@@ -27,6 +27,10 @@ def create_tables():
     db.create_all()
 
 jwt = JWT(app, authenticate, identity)  # /auth
+
+@app.errorhandler(JWTError)
+def auth_error_handler(error):
+    return jsonify({"message": f"Could not authorize. Did you include a valid Authorization header? \n Error: {error}"}), 400
 
 # View functions
 class Index(Resource):
