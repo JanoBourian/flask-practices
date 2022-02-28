@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.config.from_object(DevConfig)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + ROOT +'\data\data.db'
 app.config['SQLALchemy_TRACK_MODIFICATIONS'] = False 
-app.config['JWT_AUTH_URL_RULE'] = '/login'
+# app.config['JWT_AUTH_URL_RULE'] = '/login'
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=3600)
 api = Api(app)
 

@@ -7,14 +7,18 @@ from app import app
 import json
 
 class BaseTest(TestCase):
-    def setUp(self):
-        # Make sure database exists
+    @classmethod
+    def setUpClass(cls):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
         with app.app_context():
-            db.init_app(app)
+            db.init_app(app)        
+    
+    def setUp(self):
+        # Make sure database exists
+        with app.app_context():
             db.create_all()
         # Get a test client
-        self.app = app.test_client() 
+        self.app = app.test_client
         self.app_context = app.app_context
     
     def tearDown(self):
@@ -100,6 +104,22 @@ class TestStore(BaseTest):
             # validate user is not in db
             self.assertIsNone(UserModel.find_by_username(user.username))
         
+    def test_register_user(self):
+        username = 'test9090'
+        password = '123456'
+        with self.app() as client:
+            with self.app_context():
+                request = client.post('/register', data ={'username':username, 'password':password})
+                self.assertEqual(request.status_code, 201)
+                self.assertIsNotNone(UserModel.find_by_username(username))
+                self.assertDictEqual({'message': f"{username} added to database"}, json.loads(request.data))
+                
+    
+    def test_register_and_login(self):
+        pass
+    
+    def test_register_duplicate_user(self):
+        pass 
         
     # def setUp(self):
     #     self.name = "Test"
