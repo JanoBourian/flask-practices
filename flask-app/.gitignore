@@ -1,2 +1,3 @@
+__pycache__/
 appenv/
-.env
+**/__pycache__/
