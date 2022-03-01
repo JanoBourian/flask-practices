@@ -15,10 +15,10 @@ from db import db
 # Configurations
 app = Flask(__name__)
 app.config.from_object(DevConfig)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + ROOT +'\data\data.db'
-app.config['SQLALchemy_TRACK_MODIFICATIONS'] = False 
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + ROOT + "\data\data.db"
+app.config["SQLALchemy_TRACK_MODIFICATIONS"] = False
 # app.config['JWT_AUTH_URL_RULE'] = '/login'
-app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=3600)
+app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=3600)
 api = Api(app)
 
 # Before first request
@@ -26,11 +26,21 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
+
 jwt = JWT(app, authenticate, identity)  # /auth
+
 
 @app.errorhandler(JWTError)
 def auth_error_handler(error):
-    return jsonify({"message": f"Could not authorize. Did you include a valid Authorization header? \n Error: {error}"}), 400
+    return (
+        jsonify(
+            {
+                "message": f"Could not authorize. Did you include a valid Authorization header? \n Error: {error}"
+            }
+        ),
+        400,
+    )
+
 
 # View functions
 class Index(Resource):

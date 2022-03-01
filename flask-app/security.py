@@ -11,6 +11,7 @@ def authenticate(username, password):
     except Exception as e:
         logging.error(f"Error {e}")
 
+
 def identity(payload):
     try:
         user_id = payload["identity"]
