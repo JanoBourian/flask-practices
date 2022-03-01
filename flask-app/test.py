@@ -109,17 +109,32 @@ class TestStore(BaseTest):
         password = '123456'
         with self.app() as client:
             with self.app_context():
-                request = client.post('/register', data ={'username':username, 'password':password})
-                self.assertEqual(request.status_code, 201)
+                response = client.post('/register', data ={'username':username, 'password':password})
+                self.assertEqual(response.status_code, 201)
                 self.assertIsNotNone(UserModel.find_by_username(username))
-                self.assertDictEqual({'message': f"{username} added to database"}, json.loads(request.data))
+                self.assertDictEqual({'message': f"{username} added to database"}, json.loads(response.data))
                 
     
     def test_register_and_login(self):
-        pass
+        username = 'test9090'
+        password = '123456'
+        with self.app() as client:
+            with self.app_context():
+                client.post('/register', data ={'username':username, 'password':password})
+                auth_response = client.post('/auth', 
+                                           data =json.dumps({'username':username, 'password':password}),
+                                           headers = {'Content-Type': 'application/json'})
+                self.assertIn('access_token', json.loads(auth_response.data).keys())
     
     def test_register_duplicate_user(self):
-        pass 
+        username = 'test9090'
+        password = '123456'
+        with self.app() as client:
+            with self.app_context():
+                client.post('/register', data ={'username':username, 'password':password})
+                response = client.post('/register', data ={'username':username, 'password':password})
+                self.assertEqual(response.status_code, 404)
+                self.assertEqual({"error": f"{username} already exists"}, json.loads(response.data))
         
     # def setUp(self):
     #     self.name = "Test"
