@@ -25,12 +25,14 @@ PyJWT==1.4.2
 pylint==2.7.4
 pyrsistent==0.18.1
 python-dotenv==0.19.2
+psycopg2
 pytz==2021.3
 six==1.16.0
 SQLAlchemy==1.4.31
 toml==0.10.2
 tomli==2.0.1
 typing_extensions==4.1.1
+uwsgi=2.0.1
 Werkzeug==2.0.3
 wincertstore==0.2
 wrapt==1.12.1
