@@ -36,3 +36,22 @@ CREATE TABLE IF NOT EXISTS users(
 	password VARCHAR(50) NOT NULL
 );
 ```
+
+## Info
+
+```
+sudo -i -u <name>
+psql
+\conninfo
+exit
+exit
+adduser <name>
+visudo
+sudo su
+sudo -i -u <name>
+createuser <name> -P
+createdb <name>
+exit
+exit
+psql
+```
