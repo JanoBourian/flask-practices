@@ -1,8 +1,9 @@
 from datetime import timedelta
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
-from flask_jwt import JWT, JWTError
-from security import authenticate, identity
+# from flask_jwt import JWT, JWTError
+from flask_jwt_extended import JWTManager
+# from security import authenticate, identity
 from config.config import DevConfig
 from resources.Item import Item
 from resources.ItemList import ItemList
@@ -10,6 +11,7 @@ from resources.Store import Store
 from resources.StoreList import StoreList
 from resources.UserRegister import UserRegister
 from resources.User import User
+from resources.UserLogin import UserLogin
 from constants import ROOT
 from db import db
 
@@ -29,19 +31,20 @@ def create_tables():
     db.create_all()
 
 
-jwt = JWT(app, authenticate, identity)  # /auth
+# jwt = JWT(app, authenticate, identity)  # /auth
+jwt = JWTManager(app)
 
 
-@app.errorhandler(JWTError)
-def auth_error_handler(error):
-    return (
-        jsonify(
-            {
-                "message": f"Could not authorize. Did you include a valid Authorization header? \n Error: {error}"
-            }
-        ),
-        400,
-    )
+# @app.errorhandler(JWTError)
+# def auth_error_handler(error):
+#     return (
+#         jsonify(
+#             {
+#                 "message": f"Could not authorize. Did you include a valid Authorization header? \n Error: {error}"
+#             }
+#         ),
+#         400,
+#     )
 
 
 # View functions
@@ -58,6 +61,7 @@ api.add_resource(Store, "/store/<string:name>")
 api.add_resource(StoreList, "/stores")
 api.add_resource(UserRegister, "/register")
 api.add_resource(User, "/user/<int:user_id>")
+api.add_resource(UserLogin, "/login")
 
 # Functions
 if __name__ == "__main__":

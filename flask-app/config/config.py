@@ -9,7 +9,8 @@ load_dotenv(path.join(base_dir, ".env"))
 
 
 class BaseConfig:
-    SECRET_KEY = environ.get("SECRET_KEY")
+    # SECRET_KEY = environ.get("SECRET_KEY")
+    JWT_SECRET_KEY = environ.get("SECRET_KEY")
     TEMPLATES_FOLDER = environ.get("TEMPLATES_FOLDER")
     STATIC_FOLDER = environ.get("STATIC_FOLDER")
 
