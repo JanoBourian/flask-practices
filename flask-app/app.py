@@ -9,6 +9,7 @@ from resources.ItemList import ItemList
 from resources.Store import Store
 from resources.StoreList import StoreList
 from resources.UserRegister import UserRegister
+from resources.User import User
 from constants import ROOT
 from db import db
 
@@ -17,7 +18,8 @@ app = Flask(__name__)
 app.config.from_object(DevConfig)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + ROOT + "\data\data.db"
 app.config["SQLALchemy_TRACK_MODIFICATIONS"] = False
-# app.config['JWT_AUTH_URL_RULE'] = '/login'
+app.config['PROPAGATE_EXCEPTIONS'] = True
+app.config['JWT_AUTH_URL_RULE'] = '/login'
 app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=3600)
 api = Api(app)
 
@@ -55,6 +57,7 @@ api.add_resource(ItemList, "/items")
 api.add_resource(Store, "/store/<string:name>")
 api.add_resource(StoreList, "/stores")
 api.add_resource(UserRegister, "/register")
+api.add_resource(User, "/user/<int:user_id>")
 
 # Functions
 if __name__ == "__main__":
