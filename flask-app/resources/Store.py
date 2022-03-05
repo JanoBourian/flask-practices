@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 # from flask_jwt import jwt_required
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
 from models.StoreModel import StoreModel
 
 
@@ -52,6 +52,9 @@ class Store(Resource):
     # delete
     @jwt_required()
     def delete(self, name):
+        claims = get_jwt()
+        if not claims["is_admin"]:
+            return {"message": "Admin privilege required."}, 401
         try:
             if not StoreModel.find_by_name(name=name):
                 return {"Error": f"Store {name} not exists"}, 404
