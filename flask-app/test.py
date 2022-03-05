@@ -25,12 +25,12 @@ class BaseTest(TestCase):
             with self.app_context():
                 UserModel("tessst", "123456").add_to_database()
                 auth_request = client.post(
-                    "/auth",
+                    "/login",
                     data=json.dumps({"username": "tessst", "password": "123456"}),
                     headers={"Content-Type": "application/json"},
                 )
                 auth_token = json.loads(auth_request.data)["access_token"]
-                self.header = {"Authorization": f"JWT {auth_token}"}
+                self.header = {"Authorization": f"Bearer {auth_token}"}
 
     def tearDown(self):
         # Database is blank
@@ -142,7 +142,7 @@ class TestStore(BaseTest):
                     "/register", data={"username": username, "password": password}
                 )
                 auth_response = client.post(
-                    "/auth",
+                    "/login",
                     data=json.dumps({"username": username, "password": password}),
                     headers={"Content-Type": "application/json"},
                 )
