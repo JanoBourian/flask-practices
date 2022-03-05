@@ -12,6 +12,7 @@ from resources.StoreList import StoreList
 from resources.UserRegister import UserRegister
 from resources.User import User
 from resources.UserLogin import UserLogin
+from resources.TokenRefresh import TokenRefresh
 from constants import ROOT
 from db import db
 
@@ -71,6 +72,7 @@ api.add_resource(StoreList, "/stores")
 api.add_resource(UserRegister, "/register")
 api.add_resource(User, "/user/<int:user_id>")
 api.add_resource(UserLogin, "/login")
+api.add_resource(TokenRefresh, "/refresh")
 
 # Functions
 if __name__ == "__main__":
