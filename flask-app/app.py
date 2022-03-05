@@ -13,6 +13,8 @@ from resources.UserRegister import UserRegister
 from resources.User import User
 from resources.UserLogin import UserLogin
 from resources.TokenRefresh import TokenRefresh
+from resources.UserLogout import UserLogout
+from blacklist import BLACKLIST
 from constants import ROOT
 from db import db
 
@@ -22,8 +24,9 @@ app.config.from_object(DevConfig)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + ROOT + "\data\data.db"
 app.config["SQLALchemy_TRACK_MODIFICATIONS"] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['JWT_AUTH_URL_RULE'] = '/login'
-app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=3600)
+# app.config['JWT_AUTH_URL_RULE'] = '/login'
+# app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=3600)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=3600)
 api = Api(app)
 
 # Before first request
@@ -44,6 +47,55 @@ def add_claims_to_jwt(identity):  # Remember identity is what we define when cre
     if identity == 1:   # instead of hard-coding, we should read from a config file or database to get a list of admins instead
         return {'is_admin': True}
     return {'is_admin': False}
+
+# The following callbacks are used for customizing jwt response/error messages.
+# The original ones may not be in a very pretty format (opinionated)
+@jwt.expired_token_loader
+def expired_token_callback(jwt_header, jwt_payload):
+    return jsonify({
+        'description': 'The token has expired.',
+        'error': 'token_expired'
+    }), 401
+
+
+@jwt.invalid_token_loader
+def invalid_token_callback(jwt_header, jwt_payload):  # we have to keep the argument here, since it's passed in by the caller internally
+    return jsonify({
+        'description': 'Signature verification failed.',
+        'error': 'invalid_token'
+    }), 401
+
+
+@jwt.unauthorized_loader
+def missing_token_callback(jwt_header, jwt_payload):
+    return jsonify({
+        'description': 'Request does not contain an access token.',
+        'error': 'authorization_required'
+    }), 401
+
+
+@jwt.needs_fresh_token_loader
+def token_not_fresh_callback(jwt_header, jwt_payload):
+    return jsonify({
+        'description': 'The token is not fresh.',
+        'error': 'fresh_token_required'
+    }), 401
+
+
+@jwt.revoked_token_loader
+def revoked_token_callback(jwt_header, jwt_payload):
+    return jsonify({
+        'description': 'The token has been revoked.',
+        'error': 'token_revoked'
+    }), 401
+
+
+@jwt.token_in_blocklist_loader
+def check_if_token_revoked(jwt_header, jwt_payload):
+    app.logger.info("hello ")
+    app.logger.info(jwt_payload)
+    id_iam_looking_for = jwt_payload['jti']
+    return id_iam_looking_for in BLACKLIST
 
 # @app.errorhandler(JWTError)
 # def auth_error_handler(error):
@@ -73,6 +125,7 @@ api.add_resource(UserRegister, "/register")
 api.add_resource(User, "/user/<int:user_id>")
 api.add_resource(UserLogin, "/login")
 api.add_resource(TokenRefresh, "/refresh")
+# api.add_resource(UserLogout, "/logout")
 
 # Functions
 if __name__ == "__main__":
