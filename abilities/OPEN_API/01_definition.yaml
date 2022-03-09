@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "OpenAPI Course"
+  # summary: A pet store manager.
+  description: Specifications for OpenAPI Course
+  termsOfService: https://example.com/terms
+  contact: 
+    name: \@janobourian
+    url: https://janobourian.com/
+    email: contacto@mail.com
+  license: 
+    name: Apache 2.0
+    # identifier: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers: 
+  - url: https://dev.example.com
+    description: Development server
+    # variables: ""
+  - url: https://dev.example.com
+    description: QA server
+    # variables: ""
+  - url: https://prod.example.com
+    description: Production server
+    # variables: ""
+paths: 
+  /v1/customers:
+    get: 
+      responses:
+        "200":
+          description: list of Customers
+  /v1/beers:
+    get:
+      responses:
+        "200":
+          description: list of Beers
+        "404":
+          description: list of Descriptions
+# webhooks: ""
+# components: ""
+# security: ""
+# tags: ""
+# externalDocs: ""
+# jsonSchemaDialect: ""
