@@ -1,0 +1,39 @@
+{
+    "scalartypes": {
+        "int": 5,
+        "float": 1,
+        "string": "Hola",
+        "stringTwo": "Hola",
+        "bool": true,
+        "date": "1995-10-20T00:00:00.000Z",
+        "datetime": "2001-12-19T15:00:01.000Z",
+        "dateTime": "2019-12-24T07:30:00.000Z"
+    },
+    "collectiontypes": {
+        "seq": [
+            5001,
+            5002,
+            5003
+        ],
+        "map": {
+            "key": "value"
+        },
+        "omap": [
+            {
+                "key": "value"
+            },
+            {
+                "key": "value"
+            }
+        ],
+        "pairs": "",
+        "set": ""
+    },
+    "linestyle": "1301 Race Street,  Philadelphia US\n",
+    "blockstyle": "1301 Race Street, \nPhiladelphia\nUS\n",
+    "flowstyle": [
+        5001,
+        5002,
+        5003
+    ]
+}

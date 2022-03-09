@@ -1,0 +1,32 @@
+scalartypes:
+  int: 5
+  float: 1.0
+  string: "Hola"
+  stringTwo: Hola
+  bool: True 
+  date: 1995-10-20
+  datetime: 2001-12-19T15:00:01
+  dateTime: 2019-12-24 02:30:00 -5 
+collectiontypes:
+  seq: 
+    - 5001
+    - 5002
+    - 5003
+  map:
+    key: value
+  omap:
+    - 
+      key: value
+    - 
+      key: value
+  pairs: ""
+  set: ""
+linestyle: >
+          1301 Race Street, 
+          Philadelphia
+          US
+blockstyle: |
+            1301 Race Street, 
+            Philadelphia
+            US
+flowstyle: [5001, 5002, 5003]

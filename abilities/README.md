@@ -35,3 +35,22 @@ Is posible design our personal configurations. Check documentation for yamllint
 - Styles 
 - Block Style
 - Flow Style
+
+## First types 
+
+- Scalar types: 
+    - Integer (int)
+    - Float (float)
+    - String (str)
+    - Boolean (bool)
+    - Date and DateTime (timestamp)
+    - Images (binary)
+- Collections types:
+    - Sequence (seq)
+    - Map (map)
+    - Ordered Map (omap)
+    - Pairs (pairs)
+    - Set (set)
+- Styles:
+    - Block style
+    - Flow style
