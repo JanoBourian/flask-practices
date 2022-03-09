@@ -1,4 +1,4 @@
-# This is a little coment
+# This is a little comment
 key : value 
 studentId : 30
 first Name : Aquí
@@ -7,3 +7,15 @@ first Name : Aquí
 information : 
   name: "Jose"
   age: 17
+literal_block: |
+  This is a literal block
+  because admited new lines
+a_sequence:
+  - item 1
+  - item 2
+  - 0.5
+  - item 4: 
+    - another_sequence
+    - dict: key
+dictionary: 
+  - hello : hello

@@ -27,3 +27,11 @@ yamllint .
 ```
 
 Is posible design our personal configurations. Check documentation for yamllint
+
+## Types suport 
+
+- Scalar
+- Collections
+- Styles 
+- Block Style
+- Flow Style
