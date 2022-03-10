@@ -54,3 +54,12 @@ Is posible design our personal configurations. Check documentation for yamllint
 - Styles:
     - Block style
     - Flow style
+
+## YAML FEATURES
+
+- Anchors:
+    - Duplicate Content
+    - Represent Complex Type
+    - Inherit Properties
+    - Deep Dive: Anchors and Merge Keys
+    - Documents in YAML
