@@ -1,0 +1,135 @@
+{
+    "course": [
+        {
+            "5001": {
+                "courseId": 5001,
+                "courseName": "Computer Science",
+                "courseDuration": 4,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                }
+            }
+        },
+        {
+            "5002": {
+                "courseId": 5002,
+                "courseName": "Software",
+                "courseDuration": 6,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                }
+            }
+        },
+        {
+            "5003": {
+                "courseId": 5003,
+                "courseName": "Software",
+                "courseDuration": 6,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                }
+            }
+        }
+    ],
+    "hobbycourse": [
+        {
+            "computerHobby": {
+                "courseId": 5001,
+                "courseName": "Computer Science",
+                "courseDuration": 4,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                },
+                "isWeekend": true
+            }
+        },
+        {
+            "anotherProperty": {
+                "courseId": 5001,
+                "courseName": "Computer Science",
+                "courseDuration": 4,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                },
+                "isWeekend": false
+            }
+        }
+    ],
+    "students": [
+        {
+            "studentName": "Alhajr",
+            "enrolledCourses": [
+                5001,
+                5002,
+                5003
+            ],
+            "currentCourse": 5001,
+            "currentCourseDetails": {
+                "courseId": 5001,
+                "courseName": "Computer Science",
+                "courseDuration": 4,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                }
+            }
+        },
+        {
+            "studentName": "Domingo",
+            "enrolledCourses": [
+                5001,
+                5002,
+                5003
+            ],
+            "currentCourse": 5001,
+            "currentCourseDetails": {
+                "courseId": 5001,
+                "courseName": "Computer Science",
+                "courseDuration": 4,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                }
+            }
+        },
+        {
+            "studentName": "CarlViu",
+            "enrolledCourses": [
+                5001,
+                5002,
+                5003
+            ],
+            "currentCourse": 5001,
+            "currentCourseDetails": {
+                "courseId": 5001,
+                "courseName": "Computer Science",
+                "courseDuration": 4,
+                "courseType": "Engineering",
+                "itemsRequired": {
+                    "laptop": null,
+                    "mobile": null,
+                    "internet": null
+                }
+            }
+        }
+    ]
+}

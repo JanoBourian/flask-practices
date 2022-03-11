@@ -1,14 +1,39 @@
+---
 course:
   - 5001: &course5001
         courseId: 5001
         courseName: Computer Science
         courseDuration: 4
         courseType: Engineering
+        itemsRequired:
+          laptop: null
+          mobile: null
+          internet: null 
+
+  - 5002: &course5002
+        courseId: 5002
+        courseName: Software
+        courseDuration: 6
+        courseType: Engineering
+        itemsRequired:
+          ? laptop
+          ? mobile
+          ? internet
+  
+  - 5003: &course5003
+        courseId: 5003
+        courseName: Software
+        courseDuration: 6
+        courseType: Engineering
+        itemsRequired: {laptop, mobile, internet}
 
 hobbycourse:
   - computerHobby:
       <<: *course5001
       isWeekend: true
+  - anotherProperty:
+      <<: [*course5001, *course5002]
+      isWeekend: false
     
 students:
   - studentName: Alhajr
@@ -34,3 +59,9 @@ students:
       - 5003
     currentCourse: *curCourse
     currentCourseDetails: *course5001
+---
+staff: 
+  6001: 
+    id: 6001
+    name: James
+...
