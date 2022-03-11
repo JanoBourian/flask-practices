@@ -1,0 +1,36 @@
+course:
+  - 5001: &course5001
+        courseId: 5001
+        courseName: Computer Science
+        courseDuration: 4
+        courseType: Engineering
+
+hobbycourse:
+  - computerHobby:
+      <<: *course5001
+      isWeekend: true
+    
+students:
+  - studentName: Alhajr
+    enrolledCourses:
+      - 5001
+      - 5002
+      - 5003
+    currentCourse: &curCourse 5001
+    currentCourseDetails: *course5001
+    
+  - studentName: Domingo
+    enrolledCourses:
+      - 5001
+      - 5002
+      - 5003
+    currentCourse: *curCourse
+    currentCourseDetails: *course5001
+    
+  - studentName: CarlViu
+    enrolledCourses:
+      - 5001
+      - 5002
+      - 5003
+    currentCourse: *curCourse
+    currentCourseDetails: *course5001

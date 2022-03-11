@@ -63,3 +63,8 @@ Is posible design our personal configurations. Check documentation for yamllint
     - Inherit Properties
     - Deep Dive: Anchors and Merge Keys
     - Documents in YAML
+
+- Usages: 
+    - &curCourse, the new asigments have *
+    - course how array
+    - inherit with anchors <<: *course5001
