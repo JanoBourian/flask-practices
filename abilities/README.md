@@ -30,6 +30,8 @@ Is posible design our personal configurations. Check documentation for yamllint
 
 ## Types suport 
 
+-> !!str 
+
 - Scalar
 - Collections
 - Styles 
@@ -68,3 +70,16 @@ Is posible design our personal configurations. Check documentation for yamllint
     - &curCourse, the new asigments have *
     - course how array
     - inherit with anchors <<: *course5001
+
+## YAML DIRECTIVES
+- YAML Directives 
+    - %DIRECTIVE params 
+    - %YAML version
+- Tag Directive 
+    - %TAG shortcut for URI prefixes 
+    - %TAG handle prefix
+- Tag Handles
+    - !
+    - !!
+    - !name!
+- Tag Prefixes
