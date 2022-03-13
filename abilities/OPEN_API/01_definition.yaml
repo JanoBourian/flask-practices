@@ -97,6 +97,50 @@ paths:
                 type: array
                 minItems: 1
                 maxItems: 100
+                description: List of Beers object
+                items:
+                  type: object
+                  description: List of beers
+                  minLength: 1
+                  maxLength: 100
+                  properties: 
+                    name:
+                      type: string
+                    style:
+                      type: string
+                      minLength: 3
+                      maxLength: 8
+                      description: Styles
+                      enum:
+                        - ALE
+                        - PALE_ALE
+                        - IPA
+                        - WHEAT
+                        - LAGER
+                    upc: 
+                      type: string 
+                    price:
+                      type: number
+                    quantity:
+                      type: integer                   
+        "404":
+          description: list of Descriptions
+  /stores:
+    get:
+      responses: 
+        "200":
+          description: List of Stores
+  /v1/fake:
+    get:
+      responses:
+        "200":
+          description: list of Beers
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 1
+                maxItems: 100
                 description: List of customers
                 items:
                   type: string
@@ -105,11 +149,6 @@ paths:
                   maxLength: 100 
         "404":
           description: list of Descriptions
-  /stores:
-    get:
-      responses: 
-        "200":
-          description: List of Stores
 # webhooks: ""
 # components: ""
 # security: ""
