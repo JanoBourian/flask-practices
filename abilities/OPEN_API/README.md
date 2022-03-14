@@ -16,7 +16,16 @@
 
 - Defining Services with OpenAPI
 - OpenAPI Schema
-- OpenAPI Components
+- OpenAPI Components:
+    - schemas
+    - responses
+    - parameters
+    - examples
+    - requestBodies
+    - headers
+    - securitySchemes
+    - links
+    - callbacks
 - OpenAPI Parameters
 - OpenAPI Requests
 - OpenAPI Security Definitions

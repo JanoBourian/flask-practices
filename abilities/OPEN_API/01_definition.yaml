@@ -63,29 +63,7 @@ paths:
                       maxLength: 10
                       example: Thompson
                     address:
-                      type: object
-                      properties:
-                        line1:
-                          type: string
-                          example: 123 main
-                        city: 
-                          type: string
-                          example: St Pete
-                        stateCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: 2 Letter State Code
-                          # enum: [AL, AK, AZ, AR, CA]
-                          enum: 
-                            - AL
-                            - AK
-                            - AZ
-                            - AR
-                            - CA
-                        zipCode:
-                          type: string
-                          example: 15989
+                      $ref: "#/components/schemas/Adress2"
   /v1/beers:
     get:
       responses:
@@ -94,35 +72,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                minItems: 1
-                maxItems: 100
-                description: List of Beers object
-                items:
-                  type: object
-                  description: List of beers
-                  minLength: 1
-                  maxLength: 100
-                  properties: 
-                    name:
-                      type: string
-                    style:
-                      type: string
-                      minLength: 3
-                      maxLength: 8
-                      description: Styles
-                      enum:
-                        - ALE
-                        - PALE_ALE
-                        - IPA
-                        - WHEAT
-                        - LAGER
-                    upc: 
-                      type: string 
-                    price:
-                      type: number
-                    quantity:
-                      type: integer                   
+                $ref: "#/components/schemas/Address"                 
         "404":
           description: list of Descriptions
   /stores:
@@ -150,7 +100,62 @@ paths:
         "404":
           description: list of Descriptions
 # webhooks: ""
-# components: ""
+components: 
+  schemas:
+    Address:
+      type: object
+      minItems: 1
+      maxItems: 100
+      description: List of Beers object
+      items:
+        type: object
+        description: List of beers
+        minLength: 1
+        maxLength: 100
+        properties: 
+          name:
+            type: string
+          style:
+            type: string
+            minLength: 3
+            maxLength: 8
+            description: Styles
+            enum:
+              - ALE
+              - PALE_ALE
+              - IPA
+              - WHEAT
+              - LAGER
+          upc: 
+            type: string
+          price:
+            type: number
+          quantity:
+            type: integer
+    Adress2:
+      type: object
+      properties:
+        line1:
+          type: string
+          example: 123 main
+        city: 
+          type: string
+          example: St Pete
+        stateCode:
+          type: string
+          minLength: 2
+          maxLength: 2
+          description: 2 Letter State Code
+          # enum: [AL, AK, AZ, AR, CA]
+          enum: 
+            - AL
+            - AK
+            - AZ
+            - AR
+            - CA
+        zipCode:
+          type: string
+          example: 15989
 # security: ""
 # tags: ""
 # externalDocs: ""
