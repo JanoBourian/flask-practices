@@ -1,6 +1,7 @@
 from datetime import timedelta
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from flask_restful import Resource, Api
+from flask_cors import CORS, cross_origin
 # from flask_jwt import JWT, JWTError
 from flask_jwt_extended import JWTManager
 # from security import authenticate, identity
@@ -27,6 +28,9 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 # app.config['JWT_AUTH_URL_RULE'] = '/login'
 # app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=3600)
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=3600)
+# cors = CORS(app)
+CORS(app, resources={f"/*"})
+# app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
 
 # Before first request
@@ -112,7 +116,7 @@ def check_if_token_revoked(jwt_header, jwt_payload):
 # View functions
 class Index(Resource):
     def get(self):
-        return jsonify({"message": "Hello world!"})
+        return make_response({"message": "Hello world!"}, 200)
 
 
 # Endpoints
