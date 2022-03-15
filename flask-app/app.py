@@ -29,7 +29,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 # app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=3600)
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=3600)
 # cors = CORS(app)
-CORS(app, resources={f"/*"})
+CORS(app, resources={f"/*":{"origins":"http://192.168.0.20:8080/"}})
 # app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
 
