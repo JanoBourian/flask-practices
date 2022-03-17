@@ -1,8 +1,8 @@
-from time import timestamp
+from datetime import datetime
 
 class DispositivoModel:
     
-    def __init__(self, nombre_equipo:str = '', tipo_dispositivo_id:int=None, fecha_alta:timestamp=None, fecha_actualizacion:timestamp=None, potencia_actual:float=None, status_dispositivo_id:int=None)->None:
+    def __init__(self, nombre_equipo:str = '', tipo_dispositivo_id:int=None, fecha_alta:datetime=None, fecha_actualizacion:datetime=None, potencia_actual:float=None, status_dispositivo_id:int=None)->None:
         self.nombre_equipo = nombre_equipo
         self.tipo_dispositivo_id = tipo_dispositivo_id
         self.fecha_alta = fecha_alta
