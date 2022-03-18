@@ -33,7 +33,8 @@
         - db.py
         - configurate app.py
         - Not forget the decorator "before_first_request"
-
+    - Create models:
+        - db and db.Model Inherit
 
 # Install
 
