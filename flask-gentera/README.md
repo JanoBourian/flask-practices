@@ -26,10 +26,13 @@
         /mantenimietos <-GET->
         /mantenimiento/dispositivo/id/<id:int> <-GET->
         ```
-        - For each one endpoint do the methods and validations
-
+    - For each one endpoint do the methods and validations
     - In this case I haved the class diagram for that I started with the models:
         - Create Class Model without SQLAlchemy implementation and without methods
+    - Init SQLAlchemy database with his configuration
+        - db.py
+        - configurate app.py
+        - Not forget the decorator "before_first_request"
 
 
 # Install
