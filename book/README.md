@@ -49,6 +49,16 @@
     - make_response()
     - abort()
     - redirect()
+    - render_template()
+
+## Jinja2 Filters (some)
+    - safe
+    - capitalize
+    - lower
+    - upper
+    - title
+    - trim 
+    - striptags
 
 ## Installations
     - flask

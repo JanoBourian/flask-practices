@@ -1,16 +1,14 @@
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    response = make_response(request.headers.get("User-Agent"))
-    response.set_cookie('answer', '42')
-    return response
+    return render_template('index.html')
 
 @app.route("/user/<name>")
 def user(name):
-    return "<h1> Hello {}! </h1>".format(name)
+    return render_template('user.html', name=name)
 
 if __name__ =="__main__":
     args = {
