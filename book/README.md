@@ -62,3 +62,4 @@
 
 ## Installations
     - flask
+    - flask-bootstrap

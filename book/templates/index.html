@@ -1,1 +1,25 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
+
+{% block title %}
+Inicio | Home
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if user_list%}
+    <h1>
+        User list
+    </h1>
+    {% endif %}
+    <ul>
+        {% for user in user_list%}
+        <li class="my-4">
+            <a href="{{url_for('user', name=user.name, _external = True)}}">
+                <p> {{user.name}} </p>
+                <img src="{{url_for('static', filename=user.filePhotoName+'.jpg')}}" >
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
