@@ -1,6 +1,9 @@
 from flask import Flask, request, make_response, render_template
+from flask_moment import Moment 
+from datetime import datetime
 
 app = Flask(__name__)
+moment = Moment(app)
 
 user_list = [
     {'name': "Jonh", "filePhotoName": "jonh_book"},
@@ -10,7 +13,7 @@ user_list = [
 
 @app.route("/")
 def index():
-    return render_template('index.html', user_list=user_list)
+    return render_template('index.html', user_list=user_list, current_time = datetime.utcnow())
 
 @app.route("/user/<name>")
 def user(name):

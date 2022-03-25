@@ -60,6 +60,10 @@
     - trim 
     - striptags
 
+## flask-moment
+    - based in moment.js
+
 ## Installations
     - flask
     - flask-bootstrap
+    - flask-moment
