@@ -103,6 +103,54 @@
     - AnyOf
     - NoneOf
 
+## Flask-SQLAlchemy
+
+### Database Engine
+    - MySQL
+    - Postgres
+    - SQLite
+
+### Column Types
+    - Integer
+    - SmallInteger
+    - BigInteger
+    - Float
+    - Numeric
+    - String
+    - Text
+    - Unicode
+    - UnicodeText
+    - Boolean
+    - Date
+    - Time
+    - DateTime
+    - Interval
+    - Enum
+    - PickleType
+    - LargeBinary
+
+### SQLAlchemy common columns options
+    - primary_key
+    - unique
+    - nullable
+    - index
+    - default
+
+### SQLAlchemy common relationships options
+    - backref
+    - primaryjoin
+    - lazy:
+        - select
+        - immediate
+        - joined
+        - subquery
+        - noload
+        - dynamic
+    - uselist
+    - order_by
+    - secondary
+    - secondaryjoin
+
 ## Installations
     - flask
     - flask-bootstrap
