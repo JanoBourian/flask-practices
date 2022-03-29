@@ -50,6 +50,8 @@
     - abort()
     - redirect()
     - render_template()
+    - url_for()
+    - session['name']
 
 ## Jinja2 Filters (some)
     - safe
@@ -63,7 +65,46 @@
 ## flask-moment
     - based in moment.js
 
+## flask-wtf (Forms)
+
+### Fields
+    - BooleanField
+    - DateField
+    - DateTimeField
+    - DecimalField
+    - FileField
+    - HiddenField
+    - MultipleField
+    - FieldList
+    - FloatField
+    - FormField
+    - IntegerField
+    - PasswordField
+    - RadioField
+    - SelectField
+    - SelectMultipleField
+    - SubmitField
+    - StringField
+    - TextAreaField
+
+### Validators
+    - DataRequired
+    - Email
+    - EqualTo
+    - InputRequired
+    - IPAdress
+    - Length
+    - MacAdress
+    - NumberRange
+    - Optional
+    - Regexp
+    - URL
+    - UUID
+    - AnyOf
+    - NoneOf
+
 ## Installations
     - flask
     - flask-bootstrap
     - flask-moment
+    - flask-wtf
