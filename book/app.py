@@ -3,10 +3,17 @@ from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, 'data.sqlite')
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = "u}7BYJy(P@0UCpdSJF/4|s:pcf'oD7'I*_sTZjW)C|M|F0^K9WUQ&S~Ai=F6;!Q"
+db = SQLAlchemy(app)
 moment = Moment(app)
 
 user_list = [
@@ -15,9 +22,13 @@ user_list = [
     {'name': "Gretta", "filePhotoName": "gretta_book"},
     ]
 
+### Forms 
 class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[DataRequired()] )
     submit = SubmitField('Submit')
+
+### Model Definition
+
 
 @app.before_first_request
 def set_info():
