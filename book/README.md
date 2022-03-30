@@ -181,6 +181,14 @@
     - flask db upgrade
     - flask db downgrade
 
+## Flask Mail
+    - MAIL_SERVER
+    - MAIL_PORT
+    - MAIL_USE_TLS
+    - MAIL_USE_SSL
+    - MAIL_USERNAME
+    - MAIL_PASSWORD
+
 ## Installations
     - flask
     - flask-bootstrap
@@ -188,3 +196,4 @@
     - flask-wtf
     - flask-sqlalchemy
     - flask-migrate
+    - flask-mail
