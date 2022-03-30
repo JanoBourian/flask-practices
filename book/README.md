@@ -151,6 +151,17 @@
     - secondary
     - secondaryjoin
 
+### SQLAlchemy common operations with databases
+    - db.create_all()
+    - db.drop_all()
+    - db.session.add(model)
+    - db.session.add_all(list_of_values)
+    - db.session.commit()
+    - db.session.rollback()
+    - db.session.delete()
+
+### Querying rows
+
 ## Installations
     - flask
     - flask-bootstrap
