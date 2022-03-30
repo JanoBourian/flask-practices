@@ -161,6 +161,25 @@
     - db.session.delete()
 
 ### Querying rows
+    - all()
+    - first()
+    - first_or_404()
+    - get()
+    - get_or_404()
+    - count()
+    - paginate()
+    - filter()
+    - filter_by()
+    - limit()
+    - offset()
+    - order_by()
+    - group_by()
+
+## Flask Migrationes
+    - flask bd init
+    - flask db migrate -m "initial migration"
+    - flask db upgrade
+    - flask db downgrade
 
 ## Installations
     - flask
@@ -168,3 +187,4 @@
     - flask-moment
     - flask-wtf
     - flask-sqlalchemy
+    - flask-migrate
