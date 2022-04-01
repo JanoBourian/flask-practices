@@ -6,6 +6,7 @@ from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from datetime import datetime
+from config import (MAIL_USERNAME, MAIL_PASSWORD)
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -14,6 +15,13 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, 'data.sqlite')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = "u}7BYJy(P@0UCpdSJF/4|s:pcf'oD7'I*_sTZjW)C|M|F0^K9WUQ&S~Ai=F6;!Q"
+
+app.config["MAIL_SERVER"] = 'smtp.googlemail.com'
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USERNAME"] = MAIL_USERNAME
+app.config["MAIL_PASSWORD"] = MAIL_PASSWORD
+
 db = SQLAlchemy(app)
 moment = Moment(app)
 migrate = Migrate(app, db)

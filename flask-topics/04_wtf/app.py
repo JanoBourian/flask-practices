@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash
-from flask_wtf import FlaskForm
+# from flask_wtf import FlaskForm
 from forms.Moviment import MovimentClass
 from models.MovimentModel import MovimentModel
 from constants import ROOT
