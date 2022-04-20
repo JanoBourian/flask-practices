@@ -1,2 +1,4 @@
 largeappenv/
 largeappenv
+.env
+config/
