@@ -116,6 +116,6 @@ if __name__ =="__main__":
     args = {
     "debug":True,
     "port": '8000',
-    "host": '192.168.0.30'
+    "host": '192.168.0.26'
     }
     app.run(**args)

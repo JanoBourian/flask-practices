@@ -1,5 +1,12 @@
 # Important info
 
+## Most used types in url
+/path/<type:variable>
+    - string 
+    - int
+    - float
+    - path
+
 ## Global context
     - current_app
     - g
@@ -52,6 +59,7 @@
     - render_template()
     - url_for()
     - session['name']
+    - Blueprint
 
 ## Jinja2 Filters (some)
     - safe
@@ -197,3 +205,45 @@
     - flask-sqlalchemy
     - flask-migrate
     - flask-mail
+
+## Large app
+    - app/
+        - main/
+            - __init__.py
+            - errors.py
+            - forms.py
+            - views.py
+        - static/
+        - templates/
+        - __init__.py
+        - email.py
+        - models.py
+    - migrations/
+    - tests/
+    - .env
+    - config.py
+    - flasky.py
+    - .gitignore
+    - requirements.txt
+
+For the large app is necessary make some configurations before to run the app.
+
+### Modifications and reasons of each file
+    - app/
+        - main/
+            - __init__.py -> Blueprint configuration to set a namespace
+            - errors.py
+            - forms.py
+            - views.py -> Set views inside of their namespace
+        - static/
+        - templates/
+        - __init__.py -> Create app, set app configuration and register blueprint
+        - email.py
+        - models.py
+    - migrations/
+    - tests/
+    - .env
+    - config.py
+    - flasky.py
+    - .gitignore
+    - requirements.txt
