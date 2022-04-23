@@ -8,4 +8,4 @@ def home():
 @main.route("/user/<string:name>")
 def user(name:str):
     print(request.args)
-    return f"<h1> Hello {name}</h1>"
+    return render_template("user.html", name=name)
