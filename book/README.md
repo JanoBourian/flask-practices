@@ -237,6 +237,10 @@ For the large app is necessary make some configurations before to run the app.
             - views.py -> Set views inside of their namespace
         - static/
         - templates/
+            - basic/
+                - base.html
+                - base_nav.html
+            - email/
         - __init__.py -> Create app, set app configuration and register blueprint
         - email.py
         - models.py
