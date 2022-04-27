@@ -42,7 +42,7 @@ def user(name:str):
 @main.route("/assigments", methods=['GET'])
 def assigments():
     print(request.args)
-    print(assigments)
+    print(assigments_values)
     return render_template("assigments.html", assigments_values = assigments_values)
 
 @main.route("/schedules", methods=['GET'])

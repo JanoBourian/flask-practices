@@ -30,7 +30,11 @@ Assigments
                 <th scope="row">{{assigment.id}}</th>
                 <td>{{assigment.deadline}}</td>
                 <td>{{assigment.time}}</td>
-                <td>{{assigment.student}}</td>
+                <td>
+                    <a href="{{ url_for('main.user', name=assigment.student) }}">
+                        {{assigment.student}}
+                    </a>
+                </td>
                 <td>{{assigment.description}}</td>
                 <td>{{assigment.works}}</td>
                 <td>
