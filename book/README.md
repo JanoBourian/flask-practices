@@ -251,3 +251,8 @@ For the large app is necessary make some configurations before to run the app.
     - flasky.py
     - .gitignore
     - requirements.txt
+
+### Globals
+    - set FLASK_APP=hello.py
+    - set FLASK_DEBUG=1
+    - flask run
