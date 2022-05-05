@@ -1,6 +1,6 @@
 # Topics
 - [x] ~~*Installation*~~ [2022-05-02]
-- [ ] Basic application structure
+- [x] Basic application structure
 - [ ] Templates
 - [ ] Web Forms
 
