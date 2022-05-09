@@ -33,6 +33,7 @@
         - make_response()
         - abort()
         - redirect()
+        - render_template()
     - from context
         - current_app
         - g
@@ -73,6 +74,15 @@
         - content_type
         - set_data()
         - get_data()
+    - Jinja variables filters
+        - safe
+        - capitalize
+        - lower
+        - upper
+        - title
+        - trim
+        - striptags
 
 ### Requirements.txt
     - flask
+    - flask-bootstrap

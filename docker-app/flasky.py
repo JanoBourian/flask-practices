@@ -1,10 +1,12 @@
-from flask import Flask, make_response, abort, request
+from flask import Flask, make_response, abort, request, render_template
 
 app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def index():
-    return "<h1> Hello World! </h1>"
+    list_of_items = ["Hello", "this", "is", "my", "name",]
+    name = request.args.get('name', '')
+    return render_template('index.html', name=name, list_of_items=list_of_items)
 
 @app.route("/user/<string:name>", methods=['GET'])
 def user(name):
@@ -57,6 +59,15 @@ def delete_cook():
     response = make_response('<h1>Hello, I removed the cookie</h1>')
     response.delete_cookie('this_is_the_name')
     return response
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html', error=e), 404
+
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('errors/500.html', error=e), 500
+
 
 if __name__ == "__main__":
     app.run()

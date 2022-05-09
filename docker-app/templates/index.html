@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+{% import 'macros/macro_list.html' as macros %}
+
+{% block title %}
+{{name}}
+{% endblock %}
+
+{% block body %}
+    {% if name %}
+        <h1>{{name}}</h1>
+    {% else %}
+        <h1>Hello Guest</h1>
+    {% endif %}
+    {{macros.render_list(list_of_items)}}
+{% endblock %}
