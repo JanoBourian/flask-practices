@@ -42,8 +42,14 @@ def abort_rule():
 
 @app.route("/set-cookie", methods=['GET'])
 def set_cookie():
+    print(f"Params: {request.args}")
+    name = request.args.get('name', '')
+    value = request.args.get('value', '')
     response = make_response('<h1>Hello my friend</h1>')
-    response.set_cookie('this_is_the_name', 'this_is_the_value')
+    if name and value:
+        response.set_cookie(name, value)    
+    else:
+        response.set_cookie('this_is_the_name', 'this_is_the_value')
     return response, 200
 
 @app.route("/delete-cookie", methods=['GET'])

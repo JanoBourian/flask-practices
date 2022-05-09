@@ -1,8 +1,18 @@
 # Topics
+
+## Part I
+
 - [x] ~~*Installation*~~ [2022-05-02]
-- [x] Basic application structure
+- [x] ~~*Basic application structure*~~ [2022-05-06]
 - [ ] Templates
 - [ ] Web Forms
+- [ ] Databases
+- [ ] Email
+- [ ] Large Application Structure
+
+## Part II
+
+- [ ] User Authentication
 
 ## Steps
 
