@@ -74,6 +74,7 @@
         - content_type
         - set_data()
         - get_data()
+### Templates
     - Jinja variables filters
         - safe
         - capitalize
@@ -84,7 +85,15 @@
         - striptags
     - Jinja Links and static files
         - "{{url_for('user', name=item, _external=True)}}"
+        - <img src="{{url_for('static', filename=item+'.jpg', _external=True)}}" class="card-img-top" alt="...">
+
+### Moment 
+    - Pass the argument like return render_template('index.html', name=name, list_of_items=list_of_items, current_time=datetime.utcnow())
+    - {{moment.include_moment()}}
+    - <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
+    - <p>That was {{moment(current_time).fromNow(refresh=True)}}</p>
 
 ### Requirements.txt
     - flask
     - flask-bootstrap
+    - flask-moment

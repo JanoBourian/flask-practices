@@ -1,12 +1,15 @@
 from flask import Flask, make_response, abort, request, render_template
+from flask_moment import Moment
+from datetime import datetime
 
 app = Flask(__name__)
+moment = Moment(app)
 
 @app.route("/", methods=['GET'])
 def index():
     list_of_items = ["Hello", "this", "is", "my", "name",]
     name = request.args.get('name', '')
-    return render_template('index.html', name=name, list_of_items=list_of_items)
+    return render_template('index.html', name=name, list_of_items=list_of_items, current_time=datetime.utcnow())
 
 @app.route("/user/<string:name>", methods=['GET'])
 def user(name):
