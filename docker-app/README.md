@@ -82,6 +82,8 @@
         - title
         - trim
         - striptags
+    - Jinja Links and static files
+        - "{{url_for('user', name=item, _external=True)}}"
 
 ### Requirements.txt
     - flask

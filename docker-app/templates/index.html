@@ -9,7 +9,12 @@
     {% if name %}
         <h1>{{name}}</h1>
     {% else %}
-        <h1>Hello Guest</h1>
+        <h1 class="text-center">Hello Guest</h1>
     {% endif %}
-    {{macros.render_list(list_of_items)}}
+    <div class="container-fluid">
+        <div class="row">
+            {{macros.render_list(list_of_items)}}
+            {{macros.render_list(list_of_items)}}
+        </div>
+    </div>
 {% endblock %}
