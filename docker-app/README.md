@@ -4,8 +4,8 @@
 
 - [x] ~~*Installation*~~ [2022-05-02]
 - [x] ~~*Basic application structure*~~ [2022-05-06]
-- [x] Templates
-- [ ] Web Forms
+- [x] ~~*Templates*~~ [2022-05-11]
+- [x] ~~*Web Forms*~~ [2022-05-12]
 - [ ] Databases
 - [ ] Email
 - [ ] Large Application Structure
@@ -13,6 +13,16 @@
 ## Part II
 
 - [ ] User Authentication
+- [ ] User Roles
+- [ ] User Profiles
+- [ ] Blog Posts
+- [ ] Followers
+- [ ] User Comments
+- [ ] Application Programming Interfaces
+
+## Part III
+
+- [ ] Testing
 
 ## Steps
 
@@ -34,6 +44,9 @@
         - abort()
         - redirect()
         - render_template()
+        - session
+        - url_for()
+        - flash()
     - from context
         - current_app
         - g
@@ -95,7 +108,9 @@
 
 ### Web Forms
 
-We can add (and should) "wtforms" with the type of fields in our form and we can add "wtforms.validators" like a DataRequired.
+We can add (and should) "wtforms" with the type of fields in our form and we can add "wtforms.validators" like a DataRequired. The general steps are: Create the Class Form, Implements the class form in the view, design the styles for the form, create a sessions values and message flashing.
+
+We can put the flash messages in the base html using the bootstrap dismissing. 
 
     - Standard HTML Fields
         - BooleanField
