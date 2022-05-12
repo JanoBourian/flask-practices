@@ -1,9 +1,17 @@
 from flask import Flask, make_response, abort, request, render_template
 from flask_moment import Moment
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 from datetime import datetime
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'R4U=ENgRe,-.#m{-w,M,J*pfZ-4V|G;;[WaaHH22Dex_$/eLhF*X(4B/vrI!KW7'
 moment = Moment(app)
+
+class NameForm(FlaskForm):
+    name = StringField('What is your name? ', max_length=50, validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 @app.route("/", methods=['GET'])
 def index():

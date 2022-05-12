@@ -4,7 +4,7 @@
 
 - [x] ~~*Installation*~~ [2022-05-02]
 - [x] ~~*Basic application structure*~~ [2022-05-06]
-- [ ] Templates
+- [x] Templates
 - [ ] Web Forms
 - [ ] Databases
 - [ ] Email
@@ -93,7 +93,47 @@
     - <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
     - <p>That was {{moment(current_time).fromNow(refresh=True)}}</p>
 
+### Web Forms
+
+We can add (and should) "wtforms" with the type of fields in our form and we can add "wtforms.validators" like a DataRequired.
+
+    - Standard HTML Fields
+        - BooleanField
+        - DateField
+        - DateTimeField
+        - DecimalField
+        - FileField
+        - HiddenField
+        - MultipleFileField
+        - FieldList
+        - FloatField
+        - FormField
+        - IntegerField
+        - PasswordField
+        - RadioField
+        - SelectField
+        - SelectMultipleField
+        - SubmitField
+        - StringField
+        - TextAreaField
+    - Wtform validators
+        - DataRequired
+        - Email
+        - EqualTo
+        - InputRequired
+        - IPAdress
+        - Length
+        - MacAdress
+        - NumberRange
+        - Optional
+        - Regexp
+        - URL
+        - UUID
+        - AnyOf
+        - NoneOf
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
     - flask-moment
+    - flask-wtf
