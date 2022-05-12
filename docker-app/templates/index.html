@@ -6,8 +6,22 @@
 {% endblock %}
 
 {% block body %}
+
+    <div class="d-flex justify-content-center">
+        <form method="post" style="width:500px">
+            {{form.hidden_tag()}}
+            <div class="mb-3">
+                <label class="form-label">
+                    {{form.name.label}}
+                </label>
+                {{form.name(class="form-control")}}
+            </div>
+            {{form.submit(class="btn btn-primary")}}
+        </form>
+    </div>
+
     {% if name %}
-        <h1>{{name}}</h1>
+        <h1 class="text-center">{{name}}</h1>
     {% else %}
         <h1 class="text-center">Hello Guest</h1>
     {% endif %}
@@ -17,6 +31,7 @@
             {{macros.render_list(list_of_items)}}
         </div>
     </div>
+
     {{moment.include_moment()}}
     <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
     <p>That was {{moment(current_time).fromNow(refresh=True)}}</p>

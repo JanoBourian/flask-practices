@@ -10,14 +10,18 @@ app.config['SECRET_KEY'] = 'R4U=ENgRe,-.#m{-w,M,J*pfZ-4V|G;;[WaaHH22Dex_$/eLhF*X
 moment = Moment(app)
 
 class NameForm(FlaskForm):
-    name = StringField('What is your name? ', max_length=50, validators=[DataRequired()])
+    name = StringField('What is your name? ', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-@app.route("/", methods=['GET'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     list_of_items = ["Hello", "this", "is", "my", "name",]
-    name = request.args.get('name', '')
-    return render_template('index.html', name=name, list_of_items=list_of_items, current_time=datetime.utcnow())
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+    return render_template('index.html', form=form, name=name, list_of_items=list_of_items, current_time=datetime.utcnow())
 
 @app.route("/user/<string:name>", methods=['GET'])
 def user(name):
