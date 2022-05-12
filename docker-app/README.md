@@ -23,6 +23,9 @@
 ## Part III
 
 - [ ] Testing
+- [ ] Performance
+- [ ] Deployment
+- [ ] Additional Resources
 
 ## Steps
 
