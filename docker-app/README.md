@@ -158,3 +158,4 @@ We can put the flash messages in the base html using the bootstrap dismissing.
     - flask-bootstrap
     - flask-moment
     - flask-wtf
+    - flask-sqlalchemy
