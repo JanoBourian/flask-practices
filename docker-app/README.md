@@ -187,6 +187,14 @@ Model Definition and most common Type names:
     - PickleType -> Any python object
     - LargeBinary -> str
 
+Attributes: 
+
+    - primary_key
+    - unique
+    - index 
+    - nullable
+    - default
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
