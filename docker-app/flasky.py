@@ -3,11 +3,18 @@ from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'R4U=ENgRe,-.#m{-w,M,J*pfZ-4V|G;;[WaaHH22Dex_$/eLhF*X(4B/vrI!KW7'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/' + os.path.join(basedir,'data.sqlite')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 moment = Moment(app)
+db = SQLAlchemy(app)
 
 class NameForm(FlaskForm):
     name = StringField('What is your name? ', validators=[DataRequired()])

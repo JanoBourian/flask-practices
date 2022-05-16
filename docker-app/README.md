@@ -151,7 +151,20 @@ We can put the flash messages in the base html using the bootstrap dismissing.
         - NoneOf
 
 ### DataBases
+Databases engines
 
+    - MySQL
+    - Postgres
+    - SQLite
+
+Steps for setting up the database:
+
+    - from flask_sqlalchemy import SQLAlchemy
+    - Take the basedir 
+    - App config:
+        - SQLALCHEMY_BATABASE_URI
+        - SQLALCHEMY_TRACK_MODIFICATIONS
+    - Create db instance 
 
 ### Requirements.txt
     - flask
