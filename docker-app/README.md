@@ -151,13 +151,13 @@ We can put the flash messages in the base html using the bootstrap dismissing.
         - NoneOf
 
 ### DataBases
-Databases engines
+#### Databases engines
 
     - MySQL
     - Postgres
     - SQLite
 
-Steps for setting up the database:
+#### Steps for setting up the database:
 
     - from flask_sqlalchemy import SQLAlchemy
     - Take the basedir 
@@ -166,7 +166,7 @@ Steps for setting up the database:
         - SQLALCHEMY_TRACK_MODIFICATIONS
     - Create db instance 
 
-Model Definition and most common Type names:
+#### Model Definition and most common Type names:
 
     - Create the model definition inheriting of db
     - Integer -> int
@@ -187,13 +187,23 @@ Model Definition and most common Type names:
     - PickleType -> Any python object
     - LargeBinary -> str
 
-Attributes: 
+#### Attributes: 
 
     - primary_key
     - unique
     - index 
     - nullable
     - default
+
+#### Relathionships
+
+    - backref
+    - primaryjoin
+    - lazy
+    - uselist
+    - order_by
+    - secondary
+    - secondaryjoin
 
 ### Requirements.txt
     - flask
