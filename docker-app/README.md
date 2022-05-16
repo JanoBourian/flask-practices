@@ -166,6 +166,27 @@ Steps for setting up the database:
         - SQLALCHEMY_TRACK_MODIFICATIONS
     - Create db instance 
 
+Model Definition and most common Type names:
+
+    - Create the model definition inheriting of db
+    - Integer -> int
+    - SmallInteger -> int
+    - BigInteger -> int or long
+    - Float -> float
+    - Numeric -> decimal.Decimal
+    - String -> str
+    - Text -> str
+    - Unicode -> unicode
+    - UnicodeText -> unicode
+    - Boolean -> bool
+    - Date --> datetime.time
+    - Time -> datetime.time
+    - DateTime -> datetime.datetime
+    - Interval -> datetime.timedelta
+    - Enum -> str
+    - PickleType -> Any python object
+    - LargeBinary -> str
+
 ### Requirements.txt
     - flask
     - flask-bootstrap

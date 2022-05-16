@@ -16,6 +16,24 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 moment = Moment(app)
 db = SQLAlchemy(app)
 
+## For Databases
+class Role(db.Model):
+    __tablename__ = 'roles'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique = True, nullable = False)
+    
+    def __repr__(self):
+        return f'<Role {self.name}>'
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique = True, nullable = False, index = True)
+    
+    def __repr__(self):
+        return f'<User {self.username}>'
+
+## For forms
 class NameForm(FlaskForm):
     name = StringField('What is your name? ', validators=[DataRequired()])
     submit = SubmitField('Submit')
