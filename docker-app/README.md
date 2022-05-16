@@ -205,6 +205,62 @@ We can put the flash messages in the base html using the bootstrap dismissing.
     - secondary
     - secondaryjoin
 
+### Databases operations
+
+    - Create Tables
+        - flask shell
+        - from flasky import db
+        - db.create_all()
+        - db.drop_all()
+        - db.create_all()
+
+    - Inserting rows
+        - from flasky import Role, User
+        - admin_role = Role(name='Admin')
+        - user_susan = User(username='Susan', role=admin_role)
+        - db.session.add(admin_role)
+        - db.session.add(user_susan)
+        - db.session.add_all([admin_role, user_susan])
+        - db.session.commit()
+    
+    - Modifying rows
+        - admin_role.name = 'Administrator'
+        - db.session.add(admin_role)
+        - db.session.commit()
+    
+    - Deleting rows
+        - db.session.delete(mod_role)
+        - db.session.commit()
+        - db.session.rollback()
+
+    - Querying rows
+        - Role.query.all()
+        - User.query.all()
+        - User.query.filter_by(role=user_role).all()
+        - str(User.query.filter_by(role=admin_role))
+        - user_role = Role.query.filter_by(name='Susan').first()
+
+### Common Query filters
+
+    - filter()
+    - filter_by()
+    - limit()
+    - offset()
+    - order_by()
+    - group_by()
+
+### Common query options
+
+    - all()
+    - first()
+    - first_or_404()
+    - get()
+    - get_or_404()
+    - count()
+    - paginate()
+
+### Databases Migrations
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
