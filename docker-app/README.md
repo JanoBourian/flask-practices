@@ -6,7 +6,7 @@
 - [x] ~~*Basic application structure*~~ [2022-05-06]
 - [x] ~~*Templates*~~ [2022-05-11]
 - [x] ~~*Web Forms*~~ [2022-05-12]
-- [ ] Databases
+- [x] ~~*Databases*~~ [2022-05-17]
 - [ ] Email
 - [ ] Large Application Structure
 
@@ -151,6 +151,7 @@ We can put the flash messages in the base html using the bootstrap dismissing.
         - NoneOf
 
 ### DataBases
+
 #### Databases engines
 
     - MySQL
@@ -265,6 +266,16 @@ We can put the flash messages in the base html using the bootstrap dismissing.
     - flask db migrate -m "initial migration"
     - flask db upgrade
 
+### Email
+Flask-Mail SMTP server configuration keys
+
+    - MAIL_SERVER -> localhost
+    - MAIL_PORT -> 25
+    - MAIL_USE_TLS -> False
+    - MAIL_USE_SSL -> False
+    - MAIL_USERNAME -> None
+    - MAIL_PASSWORD -> None
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
@@ -272,3 +283,4 @@ We can put the flash messages in the base html using the bootstrap dismissing.
     - flask-wtf
     - flask-sqlalchemy
     - flask-migrate
+    - flask-mail
