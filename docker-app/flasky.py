@@ -1,7 +1,7 @@
 from flask import Flask, make_response, abort, request, render_template, session, redirect, url_for, flash
 from flask_moment import Moment
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -38,6 +38,7 @@ class User(db.Model):
 ## For forms
 class NameForm(FlaskForm):
     name = StringField('What is your name? ', validators=[DataRequired()])
+    role = SelectField('Role', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 @app.route("/", methods=['GET', 'POST'])
@@ -46,10 +47,12 @@ def index():
     print(app.config['SQLALCHEMY_DATABASE_URI'])
     list_of_items = ["Hello", "this", "is", "my", "name",]
     form = NameForm()
+    form.role.choices = [(rol.id, rol.name) for rol in Role.query.all()]
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.name.data).first()
         if user is None:
-            user = User(username=form.name.data)
+            role = Role.query.filter_by(id=form.role.data).first()
+            user = User(username=form.name.data, role=role)
             db.session.add(user)
             db.session.commit()
             session['known'] = False
@@ -121,6 +124,8 @@ def page_not_found(e):
 def page_not_found(e):
     return render_template('errors/500.html', error=e), 500
 
-
+@app.shell_context_processor
+def make_shell_context():
+    return dict(db=db, User=User, Role=Role)
 if __name__ == "__main__":
     app.run()
