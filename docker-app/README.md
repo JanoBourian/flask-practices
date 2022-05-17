@@ -261,9 +261,14 @@ We can put the flash messages in the base html using the bootstrap dismissing.
 
 ### Databases Migrations
 
+    - flask db init
+    - flask db migrate -m "initial migration"
+    - flask db upgrade
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
     - flask-moment
     - flask-wtf
     - flask-sqlalchemy
+    - flask-migrate

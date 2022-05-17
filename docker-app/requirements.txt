@@ -2,3 +2,4 @@ flask
 flask-moment
 flask-bootstrap
 flask-sqlalchemy
+flask-migrate
