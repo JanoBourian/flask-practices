@@ -5,7 +5,8 @@ from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_mail import Mail
+from flask_mail import Mail, Message
+from threading import Thread
 from datetime import datetime
 from config import (MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS, MAIL_USERNAME, MAIL_PASSWORD, FLASKY_ADMIN)
 import os
@@ -21,6 +22,9 @@ app.config['MAIL_PORT'] = MAIL_PORT
 app.config['MAIL_USE_TLS'] = MAIL_USE_TLS
 app.config['MAIL_USERNAME'] = MAIL_USERNAME
 app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
+app.config['FLASKY_MAIL_SUBJECT_PREFIX'] = '[Flasky] '
+app.config['FLASKY_MAIL_SENDER'] = 'Flasky Admin <flasky@example.com>'
+app.config["FLASKY_ADMIN"] = FLASKY_ADMIN
 
 moment = Moment(app)
 db = SQLAlchemy(app)
@@ -51,6 +55,20 @@ class NameForm(FlaskForm):
     name = StringField('What is your name? ', validators=[DataRequired()])
     role = SelectField('Role', validators=[DataRequired()])
     submit = SubmitField('Submit')
+    
+### Auxiliar functions
+def send_async_email(app, msg):
+    with app.app_context():
+        mail.send(msg)
+
+def send_email(to, subject, template, **kwargs):
+    msg = Message(app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + subject,
+                  sender = app.config['FLASKY_MAIL_SENDER'], recipients = [to])
+    msg.body = render_template(template + '.txt', **kwargs)
+    msg.html = render_template(template + '.html', **kwargs)
+    thr = Thread(target=send_async_email, args=[app, msg])
+    thr.start()
+    return thr
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -68,6 +86,8 @@ def index():
             db.session.commit()
             session['known'] = False
             flash('Looks like you have changed your name!')
+            if app.config['FLASKY_ADMIN']:
+                send_email(app.config['FLASKY_ADMIN'], 'New user added', 'mail/new_user', user=user)
         else:
             session['known'] = True
         session['name'] = form.name.data

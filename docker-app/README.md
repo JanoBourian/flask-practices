@@ -7,7 +7,7 @@
 - [x] ~~*Templates*~~ [2022-05-11]
 - [x] ~~*Web Forms*~~ [2022-05-12]
 - [x] ~~*Databases*~~ [2022-05-17]
-- [ ] Email
+- [x] ~~*Email*~~ [2022-05-18]
 - [ ] Large Application Structure
 
 ## Part II
