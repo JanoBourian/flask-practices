@@ -1,0 +1,40 @@
+import os
+from dotenv import load_dotenv
+
+basedir = os.path.abspath(os.pat.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
+
+class Config:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = os.environ.get('MAIL_PORT')
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    FLASKY_MAIL_SUBJECT_PREFIX = os.environ.get('FLASKY_MAIL_SUBJECT_PREFIX')
+    FLASKY_MAIL_SENDER = os.environ.get('FLASKY_MAIL_SENDER')
+    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALchemy_TRACK_MODIFICATIONS')
+    
+    @staticmethod
+    def init_app(app):
+        print(f"init_app in Config: {app}")
+
+class DevelopmentConfig(Config):
+    DEBUG = os.environ.get('DEBUG_DEV')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_PREFIX') + os.path.join(basedir, os.environ.get('DATABASE_NAME_DEV'))
+
+class TestingConfig(Config):
+    DEBUG = os.environ.get('DEBUG_TESTING')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_PREFIX') + os.path.join(basedir, os.environ.get('DATABASE_NAME_TESTING'))
+
+class ProductionConfig(Config):
+    DEBUG = os.environ.get('DEBUG_PRODUCTION')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_PREFIX') + os.path.join(basedir, os.environ.get('DATABASE_NAME_PRODUCTION'))
+
+config = {
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'production': ProductionConfig,
+    'default' : DevelopmentConfig
+}

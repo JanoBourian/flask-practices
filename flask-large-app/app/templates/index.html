@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+{% import 'macros/macro_list.html' as macros %}
+
+{% block title %}
+{{name}}
+{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-center">
+        <form method="post" style="width:500px">
+            {{form.hidden_tag()}}
+            <div class="mb-3">
+                <label class="form-label">
+                    {{form.name.label}}
+                </label>
+                {{form.name(class="form-control")}}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">
+                    Select a role
+                </label>
+                {{form.role(class="form-control")}}
+            </div>
+            {{form.submit(class="btn btn-primary")}}
+        </form>
+    </div>
+
+    {% if name %}
+        <h1 class="text-center">{{name}}</h1>
+    {% else %}
+        <h1 class="text-center">Hello Guest</h1>
+    {% endif %}
+
+    {% if not known %}
+        <p>Pleased to meet you</p>
+    {% else %}
+        <p>Happy to see you again! </p>
+    {% endif %}
+
+    <div class="container-fluid">
+        <div class="row">
+            {{macros.render_list(list_of_items)}}
+            {{macros.render_list(list_of_items)}}
+        </div>
+    </div>
+
+    {{moment.include_moment()}}
+    <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
+    <p>That was {{moment(current_time).fromNow(refresh=True)}}</p>
+{% endblock %}
