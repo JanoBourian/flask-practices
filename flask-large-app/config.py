@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-basedir = os.path.abspath(os.pat.dirname(__file__))
+basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
 class Config:
@@ -18,17 +18,23 @@ class Config:
     
     @staticmethod
     def init_app(app):
-        print(f"init_app in Config: {app}")
+        pass
 
 class DevelopmentConfig(Config):
+    TESTING = True
+    ENV = 'development'
     DEBUG = os.environ.get('DEBUG_DEV')
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_PREFIX') + os.path.join(basedir, os.environ.get('DATABASE_NAME_DEV'))
 
 class TestingConfig(Config):
+    TESTING = True
+    ENV = 'testing'
     DEBUG = os.environ.get('DEBUG_TESTING')
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_PREFIX') + os.path.join(basedir, os.environ.get('DATABASE_NAME_TESTING'))
 
 class ProductionConfig(Config):
+    TESTING = False
+    ENV = 'production'
     DEBUG = os.environ.get('DEBUG_PRODUCTION')
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_PREFIX') + os.path.join(basedir, os.environ.get('DATABASE_NAME_PRODUCTION'))
 
