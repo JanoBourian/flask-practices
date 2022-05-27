@@ -1,5 +1,4 @@
 {% extends "base/base.html" %}
-{% import 'macros/macro_list.html' as macros %}
 
 {% block title %}
 {{name}}
@@ -37,13 +36,6 @@
     {% else %}
         <p>Happy to see you again! </p>
     {% endif %}
-
-    <div class="container-fluid">
-        <div class="row">
-            {{macros.render_list(list_of_items)}}
-            {{macros.render_list(list_of_items)}}
-        </div>
-    </div>
 
     {{moment.include_moment()}}
     <p>The local date and time is {{moment(current_time).format('LLL')}}</p>
