@@ -1,0 +1,8 @@
+flask
+flask-wtf
+flask-mail
+flask-moment
+flask-sqlalchemy
+flask-bootstrap
+flask-migrate
+python-dotenv
