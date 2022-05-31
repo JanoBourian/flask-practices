@@ -285,3 +285,4 @@ Flask-Mail SMTP server configuration keys
     - flask-sqlalchemy
     - flask-migrate
     - flask-mail
+    - python-dotenv
