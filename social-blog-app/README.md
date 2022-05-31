@@ -8,7 +8,7 @@
 - [x] ~~*Web Forms*~~ [2022-05-12]
 - [x] ~~*Databases*~~ [2022-05-17]
 - [x] ~~*Email*~~ [2022-05-18]
-- [ ] Large Application Structure
+- [x] ~~*Large Application Structure*~~ [2002-05-30]
 
 ## Part II
 
