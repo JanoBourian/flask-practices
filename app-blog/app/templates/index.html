@@ -5,5 +5,25 @@
 {% endblock %}
 
 {% block body %}
-    <h1> Hello user </h1>
+
+    <div class="d-flex justify-content-center my-4">
+        <form method="post" style="width:500px">
+            {{form.hidden_tag()}}
+            <div class="mb-3">
+                <label class="form-label">
+                    {{form.name.label}}
+                </label>
+                {{form.name(class="form-control")}}
+            </div>
+            {{form.submit(class="btn btn-primary")}}
+        </form>
+    </div>
+
+    {% if not known %}
+        <h2>Pleased to meet you</h2>
+    {% else %}
+        <h2>Happy to see you again {{name}}! </h2>
+    {% endif %}
+
+
 {% endblock %}
