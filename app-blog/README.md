@@ -277,6 +277,36 @@ Flask-Mail SMTP server configuration keys
     - MAIL_USERNAME -> None
     - MAIL_PASSWORD -> None
 
+## setup first and basic structure
+
+- web-app
+    - app
+        - main
+            - \_\_init\_\_.py : Blueprint information
+            - errors.py 
+            - forms.py
+            - views.py : Create the routes 
+        - static
+        - templates
+            - base
+            - errors
+            - mail
+            - index.html
+        - \_\_init\_\_.py : Create the app kernel
+        - email.py
+        - models.py
+    - migrations
+    - tests
+        - \_\_init\_\_.py
+        - test_basic.py : Basic test
+    - venv
+    - .env : The setup information
+    - .gitignore
+    - config.py : Retrieve the setup information
+    - flasky.py : Create app and setup test information
+    - README.md
+    - requirements.txt
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
