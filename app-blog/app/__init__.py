@@ -1,10 +1,16 @@
 from flask import Flask
+from flask_moment import Moment
 from config import config
+
+moment = Moment()
 
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
+    
+    # init_app(app) configuration
+    moment.init_app(app)
     
     # attach routes and custom error pages here
     
