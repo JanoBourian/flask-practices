@@ -307,6 +307,12 @@ Flask-Mail SMTP server configuration keys
     - README.md
     - requirements.txt
 
+## Security
+
+### werkzeug's
+    - generate_password_hash(password, method = 'pbkdf2:sha56', salt_length = 8)
+    - check_password_hash(hash, password)
+
 ### Requirements.txt
     - flask
     - flask-bootstrap

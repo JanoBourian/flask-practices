@@ -19,7 +19,7 @@ def create_app(config_name):
     db.init_app(app)
     mail.init_app(app)
     
-    print(f"Config: {app.config}")
+    # print(f"Config: {app.config}")
     # attach routes and custom error pages here
     
     from .main import main as main_blueprint
