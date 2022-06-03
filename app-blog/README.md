@@ -313,6 +313,9 @@ Flask-Mail SMTP server configuration keys
     - generate_password_hash(password, method = 'pbkdf2:sha56', salt_length = 8)
     - check_password_hash(hash, password)
 
+### flask-login
+
+
 ### Requirements.txt
     - flask
     - flask-bootstrap
@@ -322,3 +325,4 @@ Flask-Mail SMTP server configuration keys
     - flask-migrate
     - flask-mail
     - python-dotenv
+    - flask-login
