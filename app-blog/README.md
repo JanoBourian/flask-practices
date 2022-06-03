@@ -314,7 +314,7 @@ Flask-Mail SMTP server configuration keys
     - check_password_hash(hash, password)
 
 ### flask-login
-
+    validate_ : the prefix followed by the name of a field, the mothod is invoked in addition to any regularly defined validators
 
 ### Requirements.txt
     - flask
